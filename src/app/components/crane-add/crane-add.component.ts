@@ -11,6 +11,15 @@ import { CraneService } from 'src/app/crane.service';
 export class CraneAddComponent implements OnInit {
   public addCraneForm: FormGroup;
 
+  constructor(public fb: FormBuilder,
+    public toastr: ToastrService,
+    public crudApi: CraneService) { }
+
+  ngOnInit(): void {
+    this.crudApi.getCraneList();
+    this.craneForm();
+  }
+
   craneForm() {
     this.addCraneForm = this.fb.group({
       cranename: ['', Validators.required],
@@ -32,17 +41,6 @@ export class CraneAddComponent implements OnInit {
   ResetForm() {
     this.addCraneForm.reset();
   }
-
-  constructor(public fb: FormBuilder,
-    public toastr: ToastrService,
-    public crudApi: CraneService) { }
-
-  ngOnInit(): void {
-    this.crudApi.getCraneList();
-  }
-
-
-
   get cranename() { return this.addCraneForm.get('cranename')!; }
   get loadCapacity() { return this.addCraneForm.get('loadCapacity')!; }
   get telescopicBoom() { return this.addCraneForm.get('telescopicBoom')!; }
