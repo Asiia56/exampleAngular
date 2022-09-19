@@ -1,0 +1,11 @@
+.btn:disabled {
+    opacity: 0.25;
+}
+
+.error-message {
+    color: rgb(255, 0, 0);
+}
+
+h2 {
+    margin-left: 1em;
+}

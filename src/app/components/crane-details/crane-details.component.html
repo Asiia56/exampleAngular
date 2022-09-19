@@ -1,0 +1,8 @@
+<div *ngIf="crane">
+    <h3>Details about {{ crane.name | uppercase }} </h3>
+    <p>Max. load capacity: {{ crane.loadCapacity}} t</p>
+    <p>Telescopic boom: {{ crane.telescopicBoom}} m</p>
+    <p>Max. hoist height: {{ crane.maxHeight}} m</p>
+    <p>Max. radius: {{ crane.maxRadius}} m</p>
+    <p>Number of axles: {{ crane.axles}}</p>
+  </div>

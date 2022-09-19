@@ -1,0 +1,42 @@
+<h2>Details about cranes</h2>
+
+<div class="container">
+
+  <ul class="row cranes">
+  <li class="col-sm-4" *ngFor="let crane of cranes">
+    <button type="button" [class.selected]="crane === selectedCrane" (click)="onSelect(crane)">
+      <p class="badge">{{ crane.id }}</p>
+      <p class="name">{{ crane.name | uppercase }}</p>
+    </button>
+  </li>
+</ul>
+
+
+  <div *ngIf="selectedCrane">
+    <h3>Details about {{ selectedCrane.name | uppercase }} </h3>
+    <p>Max. load capacity: {{ selectedCrane.loadCapacity}} t</p>
+    <p>Telescopic boom: {{ selectedCrane.telescopicBoom}} m</p>
+    <p>Max. hoist height: {{ selectedCrane.maxHeight}} m</p>
+    <p>Max. radius: {{ selectedCrane.maxRadius}} m</p>
+    <p>Number of axles: {{ selectedCrane.axles}}</p>
+  </div>
+</div>
+
+<div class="container container-add"> <!--this code add crane, but only temporaly - till the page will be updated -->
+  <label for="new-crane">Crane name:</label>
+  <input id="new-crane" #craneName>
+  <!-- (click) passes input value to add() and then lears the input -->
+  <button type="button" class="btn btn-primary" (click)="add(craneName.value); craneName.value=''">
+    Add crane
+  </button>
+</div>
+<!--
+  <div>
+  <button type="button" class="btn btn-primary" (click)="save()">
+    Update crane
+  </button>
+  <button type="button" class="btn btn-primary" (click)="delete(crane)">
+    Delete crane
+  </button>
+</div>
+-->
