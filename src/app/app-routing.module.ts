@@ -14,7 +14,8 @@ const routes: Routes = [//how to add a path to each page
   //{path: 'details/:id', component: CraneDetailsComponent},//if you want details on diff.page
   {path: 'login', component: LoginComponent},  
   {path: 'dashboard', component: DashboardComponent}, 
-  {path: 'crane-add', component: CraneAddComponent},
+  {path: 'crane-add', component: CraneAddComponent},  
+  {path: 'crane-edit/:id', component: CraneDetailsComponent},
   {path: 'mobile-cranes', component: MobileCranesComponent},
   {path: '', redirectTo: '/dashboard', pathMatch: 'full' }, //initial page
 ];

@@ -4,10 +4,10 @@
 <div class="container">
     <form [formGroup]="addCraneForm" (ngSubmit)="onSubmit()" #formDir="ngForm">
         <div class="form-group">
-            <label for="cranename">Crane name</label><br />
-            <input type="text" id="cranename" formControlName="cranename" class="form-control" required>
-            <div *ngIf="cranename.invalid && (cranename.dirty || cranename.touched)">
-                <div *ngIf="cranename.errors?.['required']">Name is required.</div>
+            <label for="name">Crane name</label><br />
+            <input type="text" id="name" formControlName="name" class="form-control" required>
+            <div *ngIf="name.invalid && (name.dirty || name.touched)">
+                <div *ngIf="name.errors?.['required']">Name is required.</div>
             </div>
         </div>
         <pre></pre>
@@ -35,7 +35,7 @@
             </div>
         </div>
         <pre></pre>
-        <div class="form-group">
+         <div class="form-group">
             <label for="maxRadius">Max radius</label><br />
             <input type="range" id="maxRadius" formControlName="maxRadius" min="30" max="50" step="2"
                 class="form-control" oninput="this.nextElementSibling.value = this.value" required>
@@ -45,23 +45,24 @@
             </div>
         </div>
         <pre></pre>
-        <div class="form-group">
+       <div class="form-group">
             <div for="axles">Axles</div>
             <input type="radio" id="axles2" formControlName="axles" value="2" required>
             <label for="axles2">2</label>
             <input type="radio" id="axles3" formControlName="axles" value="3">
             <label for="axles3">3</label>
-            <input type="radio" id="axles24" formControlName="axles" value="4">
+            <input type="radio" id="axles4" formControlName="axles" value="4">
             <label for="axles4">4</label>
             <div *ngIf="axles.invalid && (axles.dirty || axles.touched)">
                 <div *ngIf="axles.errors?.['required']">The field is required.</div>
             </div>
         </div>
+        
         <p>Form status: {{ addCraneForm.status }} </p>
         <pre></pre>
 
-        <p>Complete the form to enable button.</p>
+        <p>Complete the form to enable Submit button.</p>
         <button class="btn btn-primary" type="submit" [disabled]="!addCraneForm.valid">Submit</button>
-        <button class="btn btn-primary" type="button" (click)="ResetForm()">Reset</button>
+        <button class="btn btn-primary" type="button" (click)="resetForm()">Reset</button>
     </form>
 </div>

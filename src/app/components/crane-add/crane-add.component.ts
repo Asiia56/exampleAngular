@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { CraneService } from 'src/app/crane.service';
+import { CraneService } from 'src/app/services/crane.service';
 
 @Component({
   selector: 'app-crane-add',
@@ -22,7 +22,7 @@ export class CraneAddComponent implements OnInit {
 
   craneForm() {
     this.addCraneForm = this.fb.group({
-      cranename: ['', Validators.required],
+      name: ['', Validators.required],
       loadCapacity: ['', Validators.required],
       telescopicBoom: ['', Validators.required],
       maxHeight: ['', Validators.required],
@@ -35,13 +35,14 @@ export class CraneAddComponent implements OnInit {
     this.crudApi.addCrane(this.addCraneForm.value);
     this.toastr.success(
       this.addCraneForm.controls['name'].value + ' successfully added!');
-    this.ResetForm();
+    this.resetForm();
   }
 
-  ResetForm() {
+  resetForm() {
     this.addCraneForm.reset();
   }
-  get cranename() { return this.addCraneForm.get('cranename')!; }
+
+  get name() { return this.addCraneForm.get('name')!; }
   get loadCapacity() { return this.addCraneForm.get('loadCapacity')!; }
   get telescopicBoom() { return this.addCraneForm.get('telescopicBoom')!; }
   get maxHeight() { return this.addCraneForm.get('maxHeight')!; }

@@ -1,9 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CraneService } from 'src/app/services/crane.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
-
+import { ToastrService } from 'ngx-toastr';
 import { Crane } from '../../cranes';
-import { CraneService } from '../../crane.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-crane-details',
@@ -12,22 +14,58 @@ import { CraneService } from '../../crane.service';
 })
 
 export class CraneDetailsComponent implements OnInit {
-  @Input() crane?: Crane;
-  //crane: Crane | undefined;
+  updateCraneForm: FormGroup;
+  crane: Observable<Crane>;
+  public singleCrane = null;
 
-  constructor(
-    /*private route: ActivatedRoute,
-    private craneService: CraneService,
-    private location: Location*/
-  ) {}
+  constructor(public fb: FormBuilder,
+    public toastr: ToastrService,
+    public crudApi: CraneService,
+    private location: Location,
+    private actRoute: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
-    //this.getCrane();
+    this.updateCraneData();
+    const id = this.actRoute.snapshot.paramMap.get('id');
+    console.log(id);
+     this.crudApi.getCrane(id).valueChanges().subscribe(data => {
+      this.updateCraneForm.setValue(data)
+    });
   }
-/*
-  getCrane(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.craneService.getCrane(id).subscribe(crane => this.crane = crane);
-  }*/
+
+  get name() { return this.updateCraneForm.get('name')!; }
+  get loadCapacity() { return this.updateCraneForm.get('loadCapacity')!; }
+  get telescopicBoom() { return this.updateCraneForm.get('telescopicBoom')!; }
+  get maxHeight() { return this.updateCraneForm.get('maxHeight')!; }
+  get maxRadius() { return this.updateCraneForm.get('maxRadius')!; }
+  get axles() { return this.updateCraneForm.get('axles')!; }
+
+  updateCraneData() {
+    this.updateCraneForm = this.fb.group({
+      name: ['', Validators.required],
+      loadCapacity: ['', Validators.required],
+      telescopicBoom: ['', Validators.required],
+      maxHeight: ['', Validators.required],
+      maxRadius: ['', Validators.required],
+      axles: ['', Validators.required]
+    });
+  }
+
+  updateForm() {
+this.crudApi.updateCrane(this.updateCraneForm.value);
+    this.toastr.success(
+      this.updateCraneForm.controls['name'].value + ' successfully changed!');
+    this.router.navigate(['cranes']);
+  }
+
+  goBack() {
+    this.location.back();
+  }
+
+  resetForm() {
+    this.updateCraneForm.reset();
+  }
+
 
 }

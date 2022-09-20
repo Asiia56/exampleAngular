@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Crane } from './cranes';
+import { Crane } from '../cranes';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
 
 @Injectable({
@@ -20,7 +20,7 @@ export class CraneService {
       maxHeight: crane.maxHeight,
       maxRadius: crane.maxRadius,
       axles: crane.axles
-    });
+    });    
   }
 
   getCrane(id: string) {
@@ -33,7 +33,7 @@ export class CraneService {
     return this.cranesRef;
   }
 
-  updateCrane(crane: Crane) {
+  updateCrane(crane: Crane) { 
     this.craneRef.update({
       name: crane.name,
       loadCapacity: crane.loadCapacity,
@@ -42,6 +42,7 @@ export class CraneService {
       maxRadius: crane.maxRadius,
       axles: crane.axles
     });
+    return this.craneRef;
   }
 
   deleteCrane(id: string) {

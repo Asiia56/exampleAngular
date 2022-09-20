@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 
-import { MobileCrane } from './cranes';
+import { MobileCrane } from '../cranes';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { MobileCranesData } from './mobile-cranes';
+import { MobileCranesData } from '../mobile-cranes';
 
 @Injectable({
   providedIn: 'root'

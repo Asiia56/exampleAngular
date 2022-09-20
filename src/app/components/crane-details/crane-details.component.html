@@ -1,8 +1,81 @@
-<div *ngIf="crane">
-    <h3>Details about {{ crane.name | uppercase }} </h3>
-    <p>Max. load capacity: {{ crane.loadCapacity}} t</p>
-    <p>Telescopic boom: {{ crane.telescopicBoom}} m</p>
-    <p>Max. hoist height: {{ crane.maxHeight}} m</p>
-    <p>Max. radius: {{ crane.maxRadius}} m</p>
-    <p>Number of axles: {{ crane.axles}}</p>
-  </div>
+<h2>Crane edit details</h2>
+<!--Reactive Form provides synchronous access to the data model, immutability with observable operators, and change tracking through observable streams.-->
+
+<table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
+<tr *ngIf="crane | async as crane">
+    <th scope="row">{{ crane?.['$id'] }}</th>    
+    <td>{{ crane.name }}</td>
+    <td>{{ crane.loadCapacity }}</td>
+    <td>{{ crane.telescopicBoom }}</td>
+    <td>{{ crane.maxHeight }}</td>
+    <td>{{ crane.maxRadius }}</td>
+    <td>{{ crane.axles }}</td>
+  </tr>
+</table>
+
+<div class="container">
+    <form [formGroup]="updateCraneForm" (ngSubmit)="updateForm()" novalidate>
+        <div class="form-group">
+            <label for="name">Crane name</label><br />
+            <input type="text" id="name" formControlName="name" class="form-control" required>
+            <div *ngIf="name.invalid && (name.dirty || name.touched)">
+                <div *ngIf="name.errors?.['required']">Name is required.</div>
+            </div>
+        </div>
+        <pre></pre>
+        <div class="form-group">
+            <label for="loadCapacity">Load capacity</label><br />
+            <input type="number" id="loadCapacity" formControlName="loadCapacity" class="form-control" required>
+            <div *ngIf="loadCapacity.invalid && (loadCapacity.dirty || loadCapacity.touched)">
+                <div *ngIf="loadCapacity.errors?.['required']">The field is required.</div>
+            </div>
+        </div>
+        <pre></pre>
+        <div class="form-group">
+            <label for="telescopicBoom">Telescopic boom</label><br />
+            <input type="number" id="telescopicBoom" formControlName="telescopicBoom" class="form-control" required>
+            <div *ngIf="telescopicBoom.invalid && (telescopicBoom.dirty || telescopicBoom.touched)">
+                <div *ngIf="telescopicBoom.errors?.['required']">The field is required.</div>
+            </div>
+        </div>
+        <pre></pre>
+        <div class="form-group">
+            <label for="maxHeight">Max height</label><br />
+            <input type="number" id="maxHeight" formControlName="maxHeight" class="form-control" required>
+            <div *ngIf="maxHeight.invalid && (maxHeight.dirty || maxHeight.touched)">
+                <div *ngIf="maxHeight.errors?.['required']">The field is required.</div>
+            </div>
+        </div>
+        <pre></pre>
+         <div class="form-group">
+            <label for="maxRadius">Max radius</label><br />
+            <input type="range" id="maxRadius" formControlName="maxRadius" min="30" max="50" step="2"
+                class="form-control" oninput="this.nextElementSibling.value = this.value" required>
+            <output>40</output>
+            <div *ngIf="maxRadius.invalid && (maxRadius.dirty || maxRadius.touched)">
+                <div *ngIf="maxRadius.errors?.['required']">The field is required.</div>
+            </div>
+        </div>
+        <pre></pre>
+       <div class="form-group">
+            <div for="axles">Axles</div>
+            <input type="radio" id="axles2" formControlName="axles" value="2" required>
+            <label for="axles2">2</label>
+            <input type="radio" id="axles3" formControlName="axles" value="3">
+            <label for="axles3">3</label>
+            <input type="radio" id="axles4" formControlName="axles" value="4">
+            <label for="axles4">4</label>
+            <div *ngIf="axles.invalid && (axles.dirty || axles.touched)">
+                <div *ngIf="axles.errors?.['required']">The field is required.</div>
+            </div>
+        </div>
+        
+        <p>Form status: {{ updateCraneForm.status }} </p>
+        <pre></pre>
+
+        <p>Complete the form to enable Submit button.</p>
+        <button class="btn btn-primary" type="submit" [disabled]="!updateCraneForm.valid">Submit</button>
+        <button class="btn btn-primary" type="submit" (click)="goBack()">Go back</button>
+        <button class="btn btn-primary" type="button" (click)="resetForm()">Reset</button>
+    </form>
+</div>

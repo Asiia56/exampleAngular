@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { MobileCrane } from './cranes';
+import { MobileCrane } from './../cranes';
 
 @Injectable({
   providedIn: 'root',

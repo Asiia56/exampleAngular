@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MobileCrane } from 'src/app/cranes';
-import { MobileCranesService } from 'src/app/mobile-cranes.service';
+import { MobileCranesService } from 'src/app/services/mobile-cranes.service';
 import { MobileCranesData } from 'src/app/mobile-cranes';
 
 @Component({

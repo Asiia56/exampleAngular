@@ -1,8 +1,48 @@
 <h2>Details about cranes</h2>
 
 <div class="container">
+  <a routerLink="/crane-add" class="btn btn-success" *ngIf="hideWhenNoCrane"> Add crane</a>
+</div>
+<div class="pricing-header mx-auto">
+  <div class="no-data text-center" *ngIf="noData">
+    <img src="assets/crane.jpg" class="preloader-icon" alt="No crane has been added yet" />
+    <p class="nodata-msg">No crane has been added yet!</p>
+    <a routerLink="/crane-add" class="btn btn-success"> Add crane </a>
+  </div>
+  <div class="table-responsive" *ngIf="hideWhenNoCrane">
+    <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
+      <thead>
+        <tr>
+          <th scope="col">Crane Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">LoadCapacity</th>
+          <th scope="col">TelescopicBoom</th>
+          <th scope="col">maxHeight</th>
+          <th scope="col">maxRadius</th>
+          <th scope="col">axles</th>
+          <th class="text-center" scope="col">Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let crane of Crane | paginate: {itemsPerPage: 8, currentPage: p }; let i = index">
+          <th scope="row">{{ crane?.['$id'] }}</th>
+          <td>{{ crane.name }}</td>
+          <td>{{ crane.loadCapacity }}</td>
+          <td>{{ crane.telescopicBoom }}</td>
+          <td>{{ crane.maxHeight }}</td>
+          <td>{{ crane.maxRadius }}</td>
+          <td>{{ crane.axles }}</td>
+          <td class="text-center action-block">
+            <span class="mr-2 btn btn-outline-primary btn-sm" routerLink="/crane-edit/{{ crane?.['$id'] }}">Edit</span>
+            <span class="btn btn-outline-danger btn-sm" (click)="deleteCrane(crane)">Delete</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-  <ul class="row cranes">
+  </div>
+
+  <!--  <ul class="row cranes">
   <li class="col-sm-4" *ngFor="let crane of cranes">
     <button type="button" [class.selected]="crane === selectedCrane" (click)="onSelect(crane)">
       <p class="badge">{{ crane?.['id']}}</p>
@@ -11,9 +51,9 @@
   </li>
 </ul>
 <app-crane-details [crane]="selectedCrane"></app-crane-details>
-<button class="btn-a nav-link" routerLink="/crane-add"> Link to Add new crane page</button><!--this btn actually a link to crane-add-component-->
+<button class="btn-a nav-link" routerLink="/crane-add"> Link to Add new crane page</button><!--this btn actually a link to crane-add-component
 </div>
-<!--
+
  
   
   as example of Angular interpolation binding following code can be used 
