@@ -4,7 +4,8 @@
 <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
 <tr *ngIf="crane | async as crane">
     <th scope="row">{{ crane?.['$id'] }}</th>    
-    <td>{{ crane.name }}</td>
+    <td>{{ crane.name }}</td>    
+    <td>{{ crane.url }}</td>
     <td>{{ crane.loadCapacity }}</td>
     <td>{{ crane.telescopicBoom }}</td>
     <td>{{ crane.maxHeight }}</td>
@@ -20,6 +21,14 @@
             <input type="text" id="name" formControlName="name" class="form-control" required>
             <div *ngIf="name.invalid && (name.dirty || name.touched)">
                 <div *ngIf="name.errors?.['required']">Name is required.</div>
+            </div>
+        </div>
+        <pre></pre>
+        <div class="form-group">
+            <label for="url">Visual presentation of crane</label><br />
+            <input type="text" id="url" formControlName="url" class="form-control" required>
+            <div *ngIf="url.invalid && (url.dirty || url.touched)">
+                <div *ngIf="url.errors?.['required']">url is required.</div>
             </div>
         </div>
         <pre></pre>

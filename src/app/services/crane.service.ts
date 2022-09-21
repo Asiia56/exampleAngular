@@ -17,6 +17,7 @@ export class CraneService {
   addCrane(crane: Crane) {
     this.cranesRef.push({
       name: crane.name,
+      url: crane.url,
       loadCapacity: crane.loadCapacity,
       telescopicBoom: crane.telescopicBoom,
       maxHeight: crane.maxHeight,
@@ -35,9 +36,10 @@ export class CraneService {
     return this.cranesRef;
   }
 
-  updateCrane(id, crane: Crane) {
+  updateCrane(id: string, crane: Crane) {
     this.craneRef.update({
       name: crane.name,
+      url: crane.url,
       loadCapacity: crane.loadCapacity,
       telescopicBoom: crane.telescopicBoom,
       maxHeight: crane.maxHeight,

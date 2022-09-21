@@ -11,7 +11,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CraneAddComponent } from './components/crane-add/crane-add.component';
 import { CraneDetailsComponent } from './components/crane-details/crane-details.component';
-import { CraneSearchComponent } from './components/crane-search/crane-search.component';
 import { CranesComponent } from './components/cranes/cranes.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
@@ -29,17 +28,33 @@ import { ToastrModule } from 'ngx-toastr';
 import { MobileCranesComponent } from './components/mobile-cranes/mobile-cranes.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+
+import { FormComponent } from './components/anotherView/form/form.component';
+import { DetailComponent } from './components/anotherView/detail/detail.component';
+import { ListComponent } from './components/anotherView/list/list.component';
+import { ViewComponent } from './components/anotherView/view/view.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     CranesComponent,
-    CraneSearchComponent,
     CraneDetailsComponent,
     CraneAddComponent,
     NavbarComponent,
     LoginComponent,
     DashboardComponent,
-    MobileCranesComponent
+    MobileCranesComponent,
+    FormComponent,
+    DetailComponent,
+    ListComponent,
+    ViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +72,14 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AngularFireDatabaseModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(), 
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatButtonModule,
+    MatDialogModule, 
+    MatFormFieldModule, 
+    MatCardModule,
+    MatInputModule, 
+    MatRadioModule, 
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

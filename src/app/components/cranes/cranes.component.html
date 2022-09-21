@@ -15,6 +15,7 @@
         <tr>
           <th scope="col">Crane Id</th>
           <th scope="col">Name</th>
+          <th scope="col">Visual</th>
           <th scope="col">LoadCapacity</th>
           <th scope="col">TelescopicBoom</th>
           <th scope="col">maxHeight</th>
@@ -27,6 +28,7 @@
         <tr *ngFor="let crane of Crane | paginate: {itemsPerPage: 8, currentPage: p }; let i = index">
           <th scope="row">{{ crane?.['$id'] }}</th>
           <td>{{ crane.name }}</td>
+          <td><img  class="crane-image" src="{{ crane.url }}" alt="link to image with {{ crane.name }}"/></td>
           <td>{{ crane.loadCapacity }}</td>
           <td>{{ crane.telescopicBoom }}</td>
           <td>{{ crane.maxHeight }}</td>
@@ -39,7 +41,6 @@
         </tr>
       </tbody>
     </table>
-
   </div>
 
   <!--  <ul class="row cranes">

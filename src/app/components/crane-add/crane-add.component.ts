@@ -23,6 +23,7 @@ export class CraneAddComponent implements OnInit {
   craneForm() {
     this.addCraneForm = this.fb.group({
       name: ['', Validators.required],
+      url: ['', Validators.required/*, Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]?')*/],
       loadCapacity: ['', Validators.required],
       telescopicBoom: ['', Validators.required],
       maxHeight: ['', Validators.required],
@@ -43,6 +44,7 @@ export class CraneAddComponent implements OnInit {
   }
 
   get name() { return this.addCraneForm.get('name')!; }
+  get url() { return this.addCraneForm.get('url')!; }
   get loadCapacity() { return this.addCraneForm.get('loadCapacity')!; }
   get telescopicBoom() { return this.addCraneForm.get('telescopicBoom')!; }
   get maxHeight() { return this.addCraneForm.get('maxHeight')!; }

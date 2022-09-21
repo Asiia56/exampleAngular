@@ -8,10 +8,11 @@ import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CraneAddComponent } from './components/crane-add/crane-add.component';
 import { MobileCranesComponent } from './components/mobile-cranes/mobile-cranes.component';
+import { ViewComponent } from './components/anotherView/view/view.component';
 
 const routes: Routes = [//how to add a path to each page
   {path: 'cranes', component: CranesComponent},
-  //{path: 'details/:id', component: CraneDetailsComponent},//if you want details on diff.page
+  {path: 'cranes-another-view', component: ViewComponent},
   {path: 'login', component: LoginComponent},  
   {path: 'dashboard', component: DashboardComponent}, 
   {path: 'crane-add', component: CraneAddComponent},  

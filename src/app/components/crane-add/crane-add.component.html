@@ -12,6 +12,14 @@
         </div>
         <pre></pre>
         <div class="form-group">
+            <label for="url">Visual presentation of crane</label><br />
+            <input type="text" id="url" formControlName="url" class="form-control" required>
+            <div *ngIf="url.invalid && (url.dirty || url.touched)">
+                <div *ngIf="url.errors?.['required']">url is required.</div>
+            </div>
+        </div>
+        <pre></pre>
+        <div class="form-group">
             <label for="loadCapacity">Load capacity</label><br />
             <input type="number" id="loadCapacity" formControlName="loadCapacity" class="form-control" required>
             <div *ngIf="loadCapacity.invalid && (loadCapacity.dirty || loadCapacity.touched)">

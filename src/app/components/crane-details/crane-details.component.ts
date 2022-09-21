@@ -24,7 +24,7 @@ export class CraneDetailsComponent implements OnInit {
     private location: Location,
     private actRoute: ActivatedRoute,
     private router: Router) {
-    const id = this.actRoute.snapshot.paramMap.get('id');
+    const id = this.actRoute.snapshot.paramMap.get('id') as string;
     this.crudApi.getCrane(id).valueChanges().subscribe(data => {
       this.editCraneForm.setValue(data)
     })
@@ -35,6 +35,7 @@ export class CraneDetailsComponent implements OnInit {
   }
 
   get name() { return this.editCraneForm.get('name')!; }
+  get url() { return this.editCraneForm.get('url')!; }
   get loadCapacity() { return this.editCraneForm.get('loadCapacity')!; }
   get telescopicBoom() { return this.editCraneForm.get('telescopicBoom')!; }
   get maxHeight() { return this.editCraneForm.get('maxHeight')!; }
@@ -45,6 +46,7 @@ export class CraneDetailsComponent implements OnInit {
   updateCraneForm() {
     this.editCraneForm = this.fb.group({
       name: ['', Validators.required],
+      url: ['', Validators.required],
       loadCapacity: ['', Validators.required],
       telescopicBoom: ['', Validators.required],
       maxHeight: ['', Validators.required],
@@ -55,7 +57,7 @@ export class CraneDetailsComponent implements OnInit {
 
   //submit form
   updateCrane() {
-    const id = this.actRoute.snapshot.paramMap.get('id');
+    const id = this.actRoute.snapshot.paramMap.get('id') as string;
       this.crudApi.updateCrane(id, this.editCraneForm.value);
       this.toastr.success(
         this.editCraneForm.controls['name'].value + ' successfully changed!');
