@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { Crane } from '../../cranes';
 import { Observable } from 'rxjs';
+import { CranesComponent } from '../cranes/cranes.component';
 
 @Component({
   selector: 'app-crane-details',
@@ -14,35 +15,35 @@ import { Observable } from 'rxjs';
 })
 
 export class CraneDetailsComponent implements OnInit {
-  updateCraneForm: FormGroup;
+  editCraneForm: FormGroup;
   crane: Observable<Crane>;
-  public singleCrane = null;
 
   constructor(public fb: FormBuilder,
     public toastr: ToastrService,
     public crudApi: CraneService,
     private location: Location,
     private actRoute: ActivatedRoute,
-    private router: Router) { }
-
-  ngOnInit(): void {
-    this.updateCraneData();
+    private router: Router) {
     const id = this.actRoute.snapshot.paramMap.get('id');
-    console.log(id);
-     this.crudApi.getCrane(id).valueChanges().subscribe(data => {
-      this.updateCraneForm.setValue(data)
-    });
+    this.crudApi.getCrane(id).valueChanges().subscribe(data => {
+      this.editCraneForm.setValue(data)
+    })
   }
 
-  get name() { return this.updateCraneForm.get('name')!; }
-  get loadCapacity() { return this.updateCraneForm.get('loadCapacity')!; }
-  get telescopicBoom() { return this.updateCraneForm.get('telescopicBoom')!; }
-  get maxHeight() { return this.updateCraneForm.get('maxHeight')!; }
-  get maxRadius() { return this.updateCraneForm.get('maxRadius')!; }
-  get axles() { return this.updateCraneForm.get('axles')!; }
+  ngOnInit(): void {
+    this.updateCraneForm();
+  }
 
-  updateCraneData() {
-    this.updateCraneForm = this.fb.group({
+  get name() { return this.editCraneForm.get('name')!; }
+  get loadCapacity() { return this.editCraneForm.get('loadCapacity')!; }
+  get telescopicBoom() { return this.editCraneForm.get('telescopicBoom')!; }
+  get maxHeight() { return this.editCraneForm.get('maxHeight')!; }
+  get maxRadius() { return this.editCraneForm.get('maxRadius')!; }
+  get axles() { return this.editCraneForm.get('axles')!; }
+
+  //update form
+  updateCraneForm() {
+    this.editCraneForm = this.fb.group({
       name: ['', Validators.required],
       loadCapacity: ['', Validators.required],
       telescopicBoom: ['', Validators.required],
@@ -52,11 +53,13 @@ export class CraneDetailsComponent implements OnInit {
     });
   }
 
-  updateForm() {
-this.crudApi.updateCrane(this.updateCraneForm.value);
-    this.toastr.success(
-      this.updateCraneForm.controls['name'].value + ' successfully changed!');
-    this.router.navigate(['cranes']);
+  //submit form
+  updateCrane() {
+    const id = this.actRoute.snapshot.paramMap.get('id');
+      this.crudApi.updateCrane(id, this.editCraneForm.value);
+      this.toastr.success(
+        this.editCraneForm.controls['name'].value + ' successfully changed!');
+      this.router.navigate(['cranes']);
   }
 
   goBack() {
@@ -64,7 +67,7 @@ this.crudApi.updateCrane(this.updateCraneForm.value);
   }
 
   resetForm() {
-    this.updateCraneForm.reset();
+    this.editCraneForm.reset();
   }
 
 

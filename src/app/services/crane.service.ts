@@ -1,12 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Crane } from '../cranes';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CraneService {
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase,
+    private actRoute: ActivatedRoute) { }
 
   //code below is designed to work with actual database
   cranesRef: AngularFireList<any>;
@@ -20,11 +22,11 @@ export class CraneService {
       maxHeight: crane.maxHeight,
       maxRadius: crane.maxRadius,
       axles: crane.axles
-    });    
+    });
   }
 
   getCrane(id: string) {
-    this.craneRef = this.db.object('cranes-list' + id);
+    this.craneRef = this.db.object('cranes-list/' + id);
     return this.craneRef;
   }
 
@@ -33,7 +35,7 @@ export class CraneService {
     return this.cranesRef;
   }
 
-  updateCrane(crane: Crane) { 
+  updateCrane(id, crane: Crane) {
     this.craneRef.update({
       name: crane.name,
       loadCapacity: crane.loadCapacity,
@@ -42,7 +44,6 @@ export class CraneService {
       maxRadius: crane.maxRadius,
       axles: crane.axles
     });
-    return this.craneRef;
   }
 
   deleteCrane(id: string) {

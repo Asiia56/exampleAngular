@@ -14,7 +14,7 @@
 </table>
 
 <div class="container">
-    <form [formGroup]="updateCraneForm" (ngSubmit)="updateForm()" novalidate>
+    <form [formGroup]="editCraneForm" (ngSubmit)="updateCrane()" novalidate>
         <div class="form-group">
             <label for="name">Crane name</label><br />
             <input type="text" id="name" formControlName="name" class="form-control" required>
@@ -70,12 +70,12 @@
             </div>
         </div>
         
-        <p>Form status: {{ updateCraneForm.status }} </p>
+        <p>Form status: {{ editCraneForm.status }} </p>
         <pre></pre>
 
         <p>Complete the form to enable Submit button.</p>
-        <button class="btn btn-primary" type="submit" [disabled]="!updateCraneForm.valid">Submit</button>
-        <button class="btn btn-primary" type="submit" (click)="goBack()">Go back</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!editCraneForm.valid">Submit</button>
+        <button class="btn btn-primary" type="button" (click)="goBack()">Go back</button>
         <button class="btn btn-primary" type="button" (click)="resetForm()">Reset</button>
     </form>
 </div>
