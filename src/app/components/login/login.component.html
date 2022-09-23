@@ -1,37 +1,14 @@
-<h2>User Registration</h2><!--Template-Driven Form-->
-<div class="container" id="registration-form">
-    <form #login="ngForm" (ngSubmit)="submit(login)">
-        <div class="form-group">
-            <label for="username">First Name</label><br/>
-            <input type="text" name="username" id="username" class="form-control" required minlength="4" 
-           #name="ngModel" ngModel>         
-            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert"><!--Validating input in template-driven forms-->
-                <!--
-                To prevent the validator from displaying errors before the user has a chance to edit the form, you should check for either the dirty or touched states in a control.
-                When the user changes the value in the watched field, the control is marked as "dirty"
-                When the user blurs the form control element, the control is marked as "touched"-->
-                <p class="error-message"  *ngIf="name.errors?.['required']">Username is required!</p>
-                <p class="error-message"  *ngIf="name.errors?.['minlength']">Username should be at least 4 symbol long</p>
-            </div>
-        </div>
-        <pre></pre>
-        <div class="form-group">
-            <label for="lastname">Last Name</label><br/>
-            <input type="text" name="lastname" id="lastname" class="form-control" ngModel>            
-        </div>
-        <pre></pre>
-        <div class="form-group">
-            <label for="email">Email</label><br/>
-            <input type="email" name="email" class="form-control" ngModel>
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label><br/>
-            <input type="password" name="password" class="form-control" #password="ngModel" required ngModel>
-            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert">
-                <p class="error-message" *ngIf="password.errors?.['required']">Password is required!</p>
-                </div>
-        </div>
-        <pre></pre>
-        <button class="btn btn-primary" type="submit" [disabled]="login.invalid">Submit</button>
-    </form>
+<div class="container login-container" id="registration-form">
+    <div class="text-container">
+        <p>Please click the button below to create an account        </p>
+        <button mat-button routerLink="/register">Sign up</button>
+      </div>
+       <div class="form-container">
+        <h1>Welcome to login page</h1>
+    <button class="mat-raised-button" (click)="loginWithGoogle()">
+        Sign In with Google
+    </button>
+    <h5>Or sign in with your email</h5>
+    <app-login-form (formData)="login($event)"></app-login-form>
+       </div>
 </div>

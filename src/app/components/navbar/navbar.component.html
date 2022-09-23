@@ -7,21 +7,26 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive" data-toggle="collapse" aria-expanded="false"
       data-target=".navbar-collapse">
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ml-auto" >
         <li class="nav-item">
           <a class="nav-link" href="#" routerLink="/dashboard">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" routerLink="/login">Login</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="#" routerLink="/cranes">Cranes</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" routerLink="/crane-add">Crane add</a>
+        <!--
+          <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="/cranes-another-view">Cranes (another view)</a>
         </li>
+      -->
         <li class="nav-item">
           <a class="nav-link" href="#" routerLink="/mobile-cranes">Mobile cranes</a>
+        </li>
+        <li class="nav-item" *ngIf="!(isLoggedIn$ | async) as isLoggedIn">
+          <a class="nav-link" *ngIf="isLoggedIn" [routerLink]="['/login']">Log in</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn$ | async as isLoggedIn">
+          <a class="nav-link" *ngIf="isLoggedIn" (click)="logout()">Log out</a>
         </li>
       </ul>
     </div>

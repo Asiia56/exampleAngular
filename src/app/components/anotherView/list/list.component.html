@@ -1,0 +1,8 @@
+<div class="card-container">
+    <mat-card *ngFor="let crane of crane$ | async" (click)="selectCrane(crane)">
+        <mat-card-header>
+            <mat-card-title>{{ crane.name }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image [src]="crane.url" alt="Photo of a crane" />
+    </mat-card>
+</div>

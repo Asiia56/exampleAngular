@@ -40,6 +40,12 @@ import { FormComponent } from './components/anotherView/form/form.component';
 import { DetailComponent } from './components/anotherView/detail/detail.component';
 import { ListComponent } from './components/anotherView/list/list.component';
 import { ViewComponent } from './components/anotherView/view/view.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import { RegisterComponent } from './components/register/register.component';
+
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+
 
 @NgModule({
   declarations: [
@@ -55,6 +61,8 @@ import { ViewComponent } from './components/anotherView/view/view.component';
     DetailComponent,
     ListComponent,
     ViewComponent,
+    LoginFormComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,6 +74,8 @@ import { ViewComponent } from './components/anotherView/view/view.component';
       InMemoryDataService, { dataEncapsulation: false }
     ),
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideAuth(() => getAuth()),
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,

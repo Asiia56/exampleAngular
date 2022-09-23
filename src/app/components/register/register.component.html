@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="login-container">
+        <div class="form-container">
+            <h1>Welcome to register page</h1>
+            <h5>Register with your email</h5>
+            <app-login-form (formData)="register($event)"></app-login-form>
+        </div>
+        <div class="text-container">
+            <p> Already have an account? Please click the button below to sign in! </p>
+            <button mat-button routerLink="/login">Sign in</button>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Crane } from '../../cranes';
+import { Crane } from 'src/app/interfaces/cranes';
 import { CraneService } from '../../services/crane.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -23,7 +23,7 @@ export class CranesComponent implements OnInit {
       this.Crane = [];
       data.forEach(item => {
         let a = item.payload.toJSON();
-        a['$id'] = item.key ;
+        a['$id'] = item.key;
         this.Crane.push(a as Crane);
       })
     })

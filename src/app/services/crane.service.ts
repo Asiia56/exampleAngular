@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Crane } from '../cranes';
+import { Crane } from 'src/app/interfaces/cranes';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
 import { ActivatedRoute } from '@angular/router';
 

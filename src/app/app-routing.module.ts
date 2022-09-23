@@ -9,16 +9,24 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CraneAddComponent } from './components/crane-add/crane-add.component';
 import { MobileCranesComponent } from './components/mobile-cranes/mobile-cranes.component';
 import { ViewComponent } from './components/anotherView/view/view.component';
+import { RegisterComponent } from './components/register/register.component';
+
+import { redirectUnauthorizedTo, redirectLoggedInTo, canActivate } from '@angular/fire/auth-guard';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
+const redirectLoggedInToHome = () => redirectLoggedInTo(['dashboard']);
 
 const routes: Routes = [//how to add a path to each page
-  {path: 'cranes', component: CranesComponent},
-  {path: 'cranes-another-view', component: ViewComponent},
-  {path: 'login', component: LoginComponent},  
-  {path: 'dashboard', component: DashboardComponent}, 
-  {path: 'crane-add', component: CraneAddComponent},  
-  {path: 'crane-edit/:id', component: CraneDetailsComponent},
-  {path: 'mobile-cranes', component: MobileCranesComponent},
-  {path: '', redirectTo: '/dashboard', pathMatch: 'full' }, //initial page
+  { path: 'cranes', component: CranesComponent },
+  { path: 'cranes-another-view', component: ViewComponent },
+  { path: 'login', component: LoginComponent, ...canActivate(redirectLoggedInToHome) },
+  { path: 'register', component: RegisterComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'crane-add', component: CraneAddComponent, ...canActivate(redirectUnauthorizedToLogin) },
+  { path: 'crane-edit/:id', component: CraneDetailsComponent, ...canActivate(redirectUnauthorizedToLogin) },
+  { path: 'mobile-cranes', component: MobileCranesComponent },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '**', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
 
 @NgModule({

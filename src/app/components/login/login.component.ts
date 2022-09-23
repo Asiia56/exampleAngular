@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { LoginData } from 'src/app/interfaces/login-data';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +10,25 @@ import { NgForm } from '@angular/forms';
 })
 
 export class LoginComponent implements OnInit {
-  submit(login: NgForm) {
-    alert("Form Submitted! Thank you!");
-    console.log("Send", login)
+  constructor(private router: Router, private readonly auth: AuthService) { }
+  isEnabledForUserLogOut = false;
+  isEnabledForUserLogIn = true;
+
+  ngOnInit(): void {
   }
 
-  constructor() { }
+  login(data: LoginData) {
+    this.auth.login(data)
+      .then(() => this.router.navigate(['/cranes']))
+      .catch(e => console.log(e.message));
+      this.isEnabledForUserLogOut = true;
+      this.isEnabledForUserLogIn = false;
+  }
 
-  ngOnInit(): void {   
+  loginWithGoogle() {
+    this.auth.loginWithGoogle()
+    .then(() => this.router.navigate(['/cranes']))
+    .catch(e => console.log(e.message));
   }
 
 }

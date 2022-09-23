@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MobileCrane } from 'src/app/cranes';
 import { MobileCranesService } from 'src/app/services/mobile-cranes.service';
-import { MobileCranesData } from 'src/app/mobile-cranes';
+import { MobileCranesData } from 'src/app/interfaces/mobile-cranes';
+import { MobileCrane } from 'src/app/interfaces/cranes';
 
 @Component({
   selector: 'app-mobile-cranes',

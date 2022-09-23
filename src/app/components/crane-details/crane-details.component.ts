@@ -4,7 +4,7 @@ import { CraneService } from 'src/app/services/crane.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
-import { Crane } from '../../cranes';
+import { Crane } from 'src/app/interfaces/cranes';
 import { Observable } from 'rxjs';
 import { CranesComponent } from '../cranes/cranes.component';
 
