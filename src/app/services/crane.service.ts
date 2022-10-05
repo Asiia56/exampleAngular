@@ -6,11 +6,12 @@ import { ActivatedRoute } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
+
 export class CraneService {
   constructor(private db: AngularFireDatabase,
     private actRoute: ActivatedRoute) { }
 
-  //code below is designed to work with actual database
+  //code below is designed to work with realtime firebase database
   cranesRef: AngularFireList<any>;
   craneRef: AngularFireObject<any>;
 
@@ -25,7 +26,7 @@ export class CraneService {
       axles: crane.axles
     });
   }
-
+ 
   getCrane(id: string) {
     this.craneRef = this.db.object('cranes-list/' + id);
     return this.craneRef;
@@ -36,7 +37,8 @@ export class CraneService {
     return this.cranesRef;
   }
 
-  updateCrane(id: string, crane: Crane) {
+  updateCrane(crane: Crane) {
+    this.craneRef = this.db.object('cranes-list/' + crane.id);
     this.craneRef.update({
       name: crane.name,
       url: crane.url,
@@ -45,7 +47,8 @@ export class CraneService {
       maxHeight: crane.maxHeight,
       maxRadius: crane.maxRadius,
       axles: crane.axles
-    });
+    })
+    
   }
 
   deleteCrane(id: string) {

@@ -4,7 +4,6 @@ import { MobileCrane } from '../interfaces/cranes';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { MobileCranesData } from '../interfaces/mobile-cranes';
 
 @Injectable({
   providedIn: 'root'
@@ -21,10 +20,7 @@ export class MobileCranesService  {
   };
 
   getMobileCranes(): Observable<MobileCrane[]>{
-    //const cranes = of(MobileCranesData);
-    //return cranes;
     return this.http.get<MobileCrane[]>(this.mobileCranesUrl);
-
   }
 
   addMobileCrane(crane: MobileCrane): Observable<MobileCrane> {

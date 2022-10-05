@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Crane } from 'src/app/interfaces/cranes';
+import { CraneService } from 'src/app/services/crane.service';
 
 @Component({
   selector: 'app-detail',

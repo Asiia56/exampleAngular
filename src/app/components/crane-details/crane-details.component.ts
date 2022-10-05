@@ -6,7 +6,6 @@ import { Location } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { Crane } from 'src/app/interfaces/cranes';
 import { Observable } from 'rxjs';
-import { CranesComponent } from '../cranes/cranes.component';
 
 @Component({
   selector: 'app-crane-details',
@@ -57,8 +56,9 @@ export class CraneDetailsComponent implements OnInit {
 
   //submit form
   updateCrane() {
-    const id = this.actRoute.snapshot.paramMap.get('id') as string;
-      this.crudApi.updateCrane(id, this.editCraneForm.value);
+    //const id = this.actRoute.snapshot.paramMap.get('id') as string;
+    console.log("crane details sends " + this.editCraneForm.controls['name'].value)
+      this.crudApi.updateCrane(this.editCraneForm.value);
       this.toastr.success(
         this.editCraneForm.controls['name'].value + ' successfully changed!');
       this.router.navigate(['cranes']);

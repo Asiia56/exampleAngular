@@ -1,5 +1,5 @@
 export interface Crane {
-    [id: string]: any,
+    id: string;
     name: string;
     url: string;
     loadCapacity: number;

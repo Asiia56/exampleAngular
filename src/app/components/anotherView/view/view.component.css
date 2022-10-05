@@ -1,0 +1,21 @@
+/*.container {
+    margin: 20px;
+}
+
+.nav {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 50% 50%;  
+}
+
+.list-header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
+}*/

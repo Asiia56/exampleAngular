@@ -1,5 +1,6 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { Crane } from 'src/app/interfaces/cranes';
@@ -10,11 +11,12 @@ import { Crane } from 'src/app/interfaces/cranes';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-form: FormGroup;
+  form: UntypedFormGroup;
 
-  constructor(private readonly fb: FormBuilder, 
-    public readonly dialogRef: MatDialogRef<FormComponent>,//close the dialog in which our form is contained
-    @Inject(MAT_DIALOG_DATA) private readonly crane: Crane) { }
+  constructor(
+    private readonly fb: UntypedFormBuilder,
+    public readonly dialogRef: MatDialogRef<FormComponent>,
+    @Inject(MAT_DIALOG_DATA) private readonly crane: Crane) {  }
 
   ngOnInit(): void {
     this.setForm();
@@ -22,17 +24,17 @@ form: FormGroup;
 
  setForm() {
   this.form = this.fb.group({
-    name: ['', Validators.required],
-    url: ['', Validators.required],
-    loadCapacity: ['', Validators.required],
-    telescopicBoom: ['', Validators.required],
-    maxHeight: ['', Validators.required],
-    maxRadius: ['', Validators.required],
-    axles: ['', Validators.required]
+    name: [this.crane.name, Validators.required], //this.crane.name as reference to data, which received from @Input and should be inserted into respetive input field. 
+    url: [this.crane.url, Validators.required], //w/o it, form will not understand what to do with received object
+    loadCapacity: [this.crane.loadCapacity, Validators.required],
+    telescopicBoom: [this.crane.telescopicBoom, Validators.required],
+    maxHeight: [this.crane.maxHeight, Validators.required],
+    maxRadius: [this.crane.maxRadius, Validators.required],
+    axles: [this.crane.axles, Validators.required]
   });
  }
 
  onSubmit() {
-  this.dialogRef.close({ ...this.crane, ...this.form.value});//usage of spread operator to reuse the form both for creating and updating 
+  this.dialogRef.close({ ...this.form.value });//usage of spread operator to reuse the form both for creating and updating 
  }
 }

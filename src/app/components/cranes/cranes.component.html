@@ -25,7 +25,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let crane of Crane | paginate: {itemsPerPage: 8, currentPage: p }; let i = index">
+        <tr *ngFor="let crane of Crane">
           <th scope="row">{{ crane?.['$id'] }}</th>
           <td>{{ crane.name }}</td>
           <td><img  class="crane-image" src="{{ crane.url }}" alt="link to image with {{ crane.name }}"/></td>
@@ -42,30 +42,3 @@
       </tbody>
     </table>
   </div>
-
-  <!--  <ul class="row cranes">
-  <li class="col-sm-4" *ngFor="let crane of cranes">
-    <button type="button" [class.selected]="crane === selectedCrane" (click)="onSelect(crane)">
-      <p class="badge">{{ crane?.['id']}}</p>
-      <p class="name">{{ crane.name | uppercase }}</p>
-    </button>
-  </li>
-</ul>
-<app-crane-details [crane]="selectedCrane"></app-crane-details>
-<button class="btn-a nav-link" routerLink="/crane-add"> Link to Add new crane page</button><!--this btn actually a link to crane-add-component
-</div>
-
- 
-  
-  as example of Angular interpolation binding following code can be used 
-
-  <li class="col-sm-4" *ngFor="let crane of cranes">
-      <a routerLink="/detail/{{crane.id}}">
-        <p class="badge">{{ crane.id }}</p>
-        <p class="name">{{ crane.name | uppercase }}</p>
-      </a>
-    </li>
-
-and uncommend all code in crames-details and in app-routing
-
--->

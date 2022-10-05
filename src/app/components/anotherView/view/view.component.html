@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="header">
+        <h3>List of cranes</h3>
+    </div>
+    <div class="content">
+        <div class="list">
+            <div class="list-header">                
+                <button mat-raised-button color="primary" (click)="addCrane()"> Add Crane </button>
+            </div>
+            <app-list (craneEmitter)="selectCrane($event)"></app-list>
+        </div>
+        <app-detail [crane]="selectedCrane" *ngIf="selectedCrane" (deleteCrane)="deleteCrane(selectedCrane)"
+            (updateCrane)="updateCrane()"></app-detail>
+    </div>
+</div> 

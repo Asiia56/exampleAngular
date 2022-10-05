@@ -40,7 +40,7 @@ export class CranesComponent implements OnInit {
       }
     })
   }
-
+ 
   deleteCrane(crane) {
     if(window.confirm('Are sure you want to delete this crane ?')) {
       this.crudApi.deleteCrane(crane.$id)

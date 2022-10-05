@@ -9,18 +9,25 @@ import {
 } from '@angular/fire/auth';
 
 import { BehaviorSubject } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private logStatus: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  //logStatus = false;
 
-  constructor(private auth: Auth) { }
+  constructor(private auth: Auth, public toastr: ToastrService) { 
+    if(this.isLoggedIn){
+      this.logStatus.next(true);
+    }
+  }
 
   get isLoggedIn() {
     return this.logStatus.asObservable();
-  }
+  } 
   
   login({ email, password }: LoginData) {
     if (email !== '' && password !== '') {
