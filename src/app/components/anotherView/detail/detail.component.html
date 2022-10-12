@@ -10,8 +10,12 @@
             <p>Axles: {{ crane.axles }} </p>
         </div>
     </div>
-    <div>
+    <div *ngIf="isLoggedIn$ | async as isLoggedIn">
         <button (click)="update()" mat-raised-button color="primary">Edit</button>
         <button (click)="delete()" mat-raised-button color="warn">Delete</button>
+    </div>
+    <div *ngIf="!(isLoggedIn$ | async) as isLoggedIn">
+        <button [disabled]="isLoggedIn" (click)="update()" mat-raised-button color="primary">Edit</button>
+        <button [disabled]="isLoggedIn" (click)="delete()" mat-raised-button color="warn">Delete</button>
     </div>
 </div>

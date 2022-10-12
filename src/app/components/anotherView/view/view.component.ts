@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable, filter, tap, Subject, takeUntil } from 'rxjs';
+import { Observable, filter, tap, Subject } from 'rxjs';
 import { FormComponent } from '../form/form.component';
 
 import { CraneService } from 'src/app/services/crane.service';
 import { Crane } from 'src/app/interfaces/cranes';
-import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-view',
@@ -16,14 +16,15 @@ export class ViewComponent implements OnInit {
   crane: Crane[];
   selectedCrane?: Crane;
   destroyed$ = new Subject<void>();
+  isLoggedIn$ : Observable<boolean>;
 
   constructor(private readonly crudApi: CraneService,
-    private readonly dialog: MatDialog,
-    private actRoute: ActivatedRoute) {
+    private readonly dialog: MatDialog, private readonly auth: AuthService) {
   }
 
   ngOnInit(): void {
     this.dataState();
+    this.isLoggedIn$ = this.auth.isLoggedIn;
   }
 
   dataState() {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Crane } from 'src/app/interfaces/cranes';
-import { CraneService } from '../../services/crane.service';
+import { CraneService } from '../../../services/crane.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({

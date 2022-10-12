@@ -1,4 +1,4 @@
-input[type="radio"] {
+mat-radio-button {
     background-color: initial;
     cursor: default;
     appearance: auto;
@@ -6,4 +6,13 @@ input[type="radio"] {
     margin: 3px 3px 0px 5px;
     padding: initial;
     border: initial;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.form-control:focus {
+    border-color: none;
+    box-shadow: none;
 }

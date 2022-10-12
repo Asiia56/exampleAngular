@@ -1,4 +1,52 @@
-<app-navbar></app-navbar>
-<h1 class="title">{{title}}</h1>
-<router-outlet></router-outlet>
+<mat-sidenav-container fullscreen>
+    <mat-sidenav #sidenav>
 
+        <mat-nav-list (click)="sidenav.close()">
+            <a mat-list-item routerLink="/dashboard">
+                <mat-icon>home</mat-icon> Home
+            </a>
+            <a mat-list-item routerLink="/cranes">
+                <mat-icon>precision_manufacturing</mat-icon> Cranes
+            </a>
+            <a mat-list-item routerLink="/cranes-another-view">
+                <mat-icon>shopping_basket</mat-icon> Cranes (another view)
+            </a>
+            <a mat-list-item routerLink="/mobile-cranes">
+                <mat-icon>agriculture</mat-icon> Mobile cranes
+            </a>
+
+            <div *ngIf="!(isLoggedIn$ | async) as isLoggedIn">
+                <a mat-list-item  *ngIf="isLoggedIn" [routerLink]="['/login']">
+                    <mat-icon>account_circle</mat-icon> Log in
+                </a>
+            </div>
+            <div *ngIf="isLoggedIn$ | async as isLoggedIn">
+                <a mat-list-item  *ngIf="isLoggedIn" (click)="logout()">
+                    <mat-icon>logout</mat-icon> Log out
+                </a>
+            </div>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-toolbar color="primary">
+        <button mat-icon-button (click)="sidenav.open()">
+            <mat-icon fontIcon="menu"> </mat-icon>
+        </button>
+        <a routerLink="/dashboard">
+            <h1 class="title">{{title}}</h1>
+        </a>
+        <div class="menu-log">
+            <div *ngIf="!(isLoggedIn$ | async) as isLoggedIn">
+                <a mat-button *ngIf="isLoggedIn" [routerLink]="['/login']">
+                    <mat-icon>account_circle</mat-icon> Login
+                </a>
+            </div>
+
+            <div mat-list-item *ngIf="isLoggedIn$ | async as isLoggedIn">
+                <a mat-button *ngIf="isLoggedIn" (click)="logout()">
+                    <mat-icon>logout</mat-icon> Logout
+                </a>
+            </div>
+        </div>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+</mat-sidenav-container>

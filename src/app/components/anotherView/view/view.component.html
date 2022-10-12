@@ -4,12 +4,16 @@
     </div>
     <div class="content">
         <div class="list">
-            <div class="list-header">                
+            <div class="list-header" *ngIf="isLoggedIn$ | async as isLoggedIn">
                 <button mat-raised-button color="primary" (click)="addCrane()"> Add Crane </button>
+            </div>
+            <div class="list-header" *ngIf="!(isLoggedIn$ | async) as isLoggedIn">
+                <button mat-raised-button color="primary" [disabled]="isLoggedIn" (click)="addCrane()"> Add Crane
+                </button>
             </div>
             <app-list (craneEmitter)="selectCrane($event)"></app-list>
         </div>
         <app-detail [crane]="selectedCrane" *ngIf="selectedCrane" (deleteCrane)="deleteCrane(selectedCrane)"
             (updateCrane)="updateCrane()"></app-detail>
     </div>
-</div> 
+</div>

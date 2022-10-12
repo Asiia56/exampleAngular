@@ -1,8 +1,8 @@
-<h2>Crane add</h2>
+<h2>Crane edit details</h2>
 <!--Reactive Form provides synchronous access to the data model, immutability with observable operators, and change tracking through observable streams.-->
-
+ 
 <div class="container">
-    <form [formGroup]="addCraneForm" (ngSubmit)="onSubmit()" #formDir="ngForm">
+    <form [formGroup]="editCraneForm" (ngSubmit)="updateCrane()" novalidate>
         <div class="form-group">
             <label for="name">Crane name</label><br />
             <input type="text" id="name" formControlName="name" class="form-control" required>
@@ -66,11 +66,12 @@
             </div>
         </div>
         
-        <p>Form status: {{ addCraneForm.status }} </p>
+        <p>Form status: {{ editCraneForm.status }} </p>
         <pre></pre>
 
         <p>Complete the form to enable Submit button.</p>
-        <button class="btn btn-primary" type="submit" [disabled]="!addCraneForm.valid">Submit</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!editCraneForm.valid">Submit</button>
+        <button class="btn btn-primary" type="button" (click)="goBack()">Go back</button>
         <button class="btn btn-primary" type="button" (click)="resetForm()">Reset</button>
     </form>
 </div>

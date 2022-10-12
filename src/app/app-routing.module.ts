@@ -2,11 +2,11 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CranesComponent } from './components/cranes/cranes.component';
-import { CraneDetailsComponent } from './components/crane-details/crane-details.component';
+import { CranesComponent } from './components/view/cranes/cranes.component';
+import { CraneDetailsComponent } from './components/view/crane-details/crane-details.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { CraneAddComponent } from './components/crane-add/crane-add.component';
+import { CraneAddComponent } from './components/view/crane-add/crane-add.component';
 import { MobileCranesComponent } from './components/mobile-cranes/mobile-cranes.component';
 import { ViewComponent } from './components/anotherView/view/view.component';
 import { RegisterComponent } from './components/register/register.component';

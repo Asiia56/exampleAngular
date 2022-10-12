@@ -20,6 +20,11 @@ export class CraneAddComponent implements OnInit {
     this.craneForm();
   }
 
+  sliderValue: number = 30;
+  updateSetting(event: { value: number; }) {
+    this.sliderValue = event.value;
+  }
+
   craneForm() {
     this.addCraneForm = this.fb.group({
       name: ['', Validators.required],

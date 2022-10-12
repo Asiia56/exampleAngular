@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -9,12 +10,12 @@ import { InMemoryDataService } from './services/in-memory-data.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CraneAddComponent } from './components/crane-add/crane-add.component';
-import { CraneDetailsComponent } from './components/crane-details/crane-details.component';
-import { CranesComponent } from './components/cranes/cranes.component';
+import { CraneAddComponent } from './components/view/crane-add/crane-add.component';
+import { CraneDetailsComponent } from './components/view/crane-details/crane-details.component';
+import { CranesComponent } from './components/view/cranes/cranes.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { MobileCranesComponent } from './components/mobile-cranes/mobile-cranes.component';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -25,16 +26,10 @@ import { environment } from '../environments/environment';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { MobileCranesComponent } from './components/mobile-cranes/mobile-cranes.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatRadioModule } from '@angular/material/radio';
-import { CommonModule } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
+import { MaterialExampleModule } from './material.module'; 
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { FormComponent } from './components/anotherView/form/form.component';
 import { DetailComponent } from './components/anotherView/detail/detail.component';
@@ -53,7 +48,6 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
     CranesComponent,
     CraneDetailsComponent,
     CraneAddComponent,
-    NavbarComponent,
     LoginComponent,
     DashboardComponent,
     MobileCranesComponent,
@@ -83,12 +77,8 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
     BrowserAnimationsModule,
     ToastrModule.forRoot(), 
     NgxPaginationModule,
-    MatButtonModule,
-    MatDialogModule, 
-    MatFormFieldModule, 
-    MatCardModule,
-    MatInputModule, 
-    MatRadioModule, 
+    MaterialExampleModule,
+    MatNativeDateModule,
     CommonModule
   ],
   providers: [],
