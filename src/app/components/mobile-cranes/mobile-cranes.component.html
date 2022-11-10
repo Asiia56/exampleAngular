@@ -1,7 +1,6 @@
-<h2>Details about cranes</h2>
 
 <div class="container">
-
+  <h2 class="page-header">Details about cranes</h2>
   <ul class="row cranes">
   <li class="col-sm-4" *ngFor="let crane of cranes">
     <button type="button" [class.selected]="crane === selectedCrane" (click)="onSelect(crane)">
@@ -30,13 +29,3 @@
     Add crane
   </button>
 </div>
-<!--
-  <div>
-  <button type="button" class="btn btn-primary" (click)="save()">
-    Update crane
-  </button>
-  <button type="button" class="btn btn-primary" (click)="delete(crane)">
-    Delete crane
-  </button>
-</div>
--->

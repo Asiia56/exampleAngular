@@ -5,7 +5,11 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.scss']
+
+  //templateUrl: './dashboard-c-on-css.component.html',
+  //styleUrls: ['./dashboard-c-on-css.component.scss']
+
 })
 export class DashboardComponent implements OnInit {
 

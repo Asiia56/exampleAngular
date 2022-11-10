@@ -19,8 +19,7 @@ export class InMemoryDataService implements InMemoryDbService{
   }
 
   // Overrides the genId method to ensure that a cranes always has an id.
-  // If the craneses array is empty,
-  // the method below returns the initial number (0).
+  // If the cranes array is empty, the method below returns the initial number (0).
   // if the craneses array is not empty, the method below returns the highest
   // cranes id + 1.
   genId(mobileCranes: MobileCrane[]): number {

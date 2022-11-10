@@ -19,7 +19,7 @@ export class AuthService {
   private logStatus: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   //logStatus = false;
 
-  constructor(private auth: Auth, public toastr: ToastrService) { 
+  constructor(private auth: Auth) {
     if(this.isLoggedIn){
       this.logStatus.next(true);
     }
@@ -27,8 +27,8 @@ export class AuthService {
 
   get isLoggedIn() {
     return this.logStatus.asObservable();
-  } 
-  
+  }
+
   login({ email, password }: LoginData) {
     if (email !== '' && password !== '') {
       this.logStatus.next(true);
@@ -49,5 +49,5 @@ export class AuthService {
     return signInWithPopup(this.auth, new GoogleAuthProvider());
   }
 
-  
+
 }

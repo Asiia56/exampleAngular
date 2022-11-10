@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MobileCranesService } from 'src/app/services/mobile-cranes.service';
-import { MobileCranesData } from 'src/app/interfaces/mobile-cranes';
 import { MobileCrane } from 'src/app/interfaces/cranes';
 
 @Component({
   selector: 'app-mobile-cranes',
   templateUrl: './mobile-cranes.component.html',
-  styleUrls: ['./mobile-cranes.component.css']
+  styleUrls: ['./mobile-cranes.component.scss']
 })
 export class MobileCranesComponent implements OnInit {
   //cranes = MobileCranesData;

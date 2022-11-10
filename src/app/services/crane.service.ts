@@ -23,10 +23,11 @@ export class CraneService {
       telescopicBoom: crane.telescopicBoom,
       maxHeight: crane.maxHeight,
       maxRadius: crane.maxRadius,
-      axles: crane.axles
+      axles: crane.axles,
+      shortDescription: crane.shortDescription
     });
   }
- 
+
   getCrane(id: string) {
     this.craneRef = this.db.object('cranes-list/' + id);
     return this.craneRef;
@@ -37,8 +38,8 @@ export class CraneService {
     return this.cranesRef;
   }
 
-  updateCrane(crane: Crane) {
-    this.craneRef = this.db.object('cranes-list/' + crane.id);
+  updateCrane(id: string, crane: Crane) {
+    this.craneRef = this.db.object('cranes-list/' + id);
     this.craneRef.update({
       name: crane.name,
       url: crane.url,
@@ -46,9 +47,9 @@ export class CraneService {
       telescopicBoom: crane.telescopicBoom,
       maxHeight: crane.maxHeight,
       maxRadius: crane.maxRadius,
-      axles: crane.axles
-    })
-    
+      axles: crane.axles,
+      shortDescription: crane.shortDescription
+    });
   }
 
   deleteCrane(id: string) {

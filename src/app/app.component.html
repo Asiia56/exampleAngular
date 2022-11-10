@@ -1,52 +1,74 @@
 <mat-sidenav-container fullscreen>
-    <mat-sidenav #sidenav>
+  <!--nice side navigation-->
+  <mat-sidenav #sidenav>
+    <mat-nav-list (click)="sidenav.close()">
+      <a mat-list-item routerLink="/dashboard">
+        <mat-icon>home</mat-icon> Home
+      </a>
+      <a mat-list-item routerLink="/cranes-table-view">
+        <mat-icon>precision_manufacturing</mat-icon> Cranes (table view)
+      </a>
+      <a mat-list-item routerLink="/cranes-card-view">
+        <mat-icon>shopping_basket</mat-icon> Cranes (card view)
+      </a>
+      <a mat-list-item routerLink="/mobile-cranes">
+        <mat-icon>agriculture</mat-icon> Mobile cranes
+      </a>
 
-        <mat-nav-list (click)="sidenav.close()">
-            <a mat-list-item routerLink="/dashboard">
-                <mat-icon>home</mat-icon> Home
-            </a>
-            <a mat-list-item routerLink="/cranes">
-                <mat-icon>precision_manufacturing</mat-icon> Cranes
-            </a>
-            <a mat-list-item routerLink="/cranes-another-view">
-                <mat-icon>shopping_basket</mat-icon> Cranes (another view)
-            </a>
-            <a mat-list-item routerLink="/mobile-cranes">
-                <mat-icon>agriculture</mat-icon> Mobile cranes
-            </a>
-
-            <div *ngIf="!(isLoggedIn$ | async) as isLoggedIn">
-                <a mat-list-item  *ngIf="isLoggedIn" [routerLink]="['/login']">
-                    <mat-icon>account_circle</mat-icon> Log in
-                </a>
-            </div>
-            <div *ngIf="isLoggedIn$ | async as isLoggedIn">
-                <a mat-list-item  *ngIf="isLoggedIn" (click)="logout()">
-                    <mat-icon>logout</mat-icon> Log out
-                </a>
-            </div>
-        </mat-nav-list>
-    </mat-sidenav>
-    <mat-toolbar color="primary">
-        <button mat-icon-button (click)="sidenav.open()">
-            <mat-icon fontIcon="menu"> </mat-icon>
-        </button>
-        <a routerLink="/dashboard">
-            <h1 class="title">{{title}}</h1>
+      <div *ngIf="!(isLoggedIn$ | async) as isLoggedIn">
+        <a mat-list-item *ngIf="isLoggedIn" [routerLink]="['/login']">
+          <mat-icon>account_circle</mat-icon> Log in
         </a>
-        <div class="menu-log">
-            <div *ngIf="!(isLoggedIn$ | async) as isLoggedIn">
-                <a mat-button *ngIf="isLoggedIn" [routerLink]="['/login']">
-                    <mat-icon>account_circle</mat-icon> Login
-                </a>
-            </div>
+      </div>
+      <div *ngIf="isLoggedIn$ | async as isLoggedIn">
+        <a mat-list-item *ngIf="isLoggedIn" (click)="logout()">
+          <mat-icon>logout</mat-icon> Log out
+        </a>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
 
-            <div mat-list-item *ngIf="isLoggedIn$ | async as isLoggedIn">
-                <a mat-button *ngIf="isLoggedIn" (click)="logout()">
-                    <mat-icon>logout</mat-icon> Logout
-                </a>
-            </div>
+  <!--navigation on top of the page-->
+  <mat-toolbar color="primary">
+
+      <!--button to open side navigation-->
+    <button mat-icon-button (click)="sidenav.open()">
+      <mat-icon fontIcon="menu"> </mat-icon>
+    </button>
+
+      <!--drop-down menu-->
+      <a mat-button [matMenuTriggerFor]="dropdown">
+        <mat-icon>precision_manufacturing</mat-icon> Cranes
+      </a>
+      <mat-menu #dropdown>
+        <button mat-menu-item class="dropdown-btn" routerLink="/cranes-table-view">Cranes (table view)</button>
+        <button mat-menu-item class="dropdown-btn" routerLink="/cranes-card-view">Cranes (card view)</button>
+        <button mat-menu-item class="dropdown-btn" routerLink="/mobile-cranes">Mobile cranes</button>
+      </mat-menu>
+
+      <!--central part: logo and link-->
+      <a routerLink="/dashboard">
+        <h1 class="title">{{title}}</h1>
+      </a>
+      <!--log in/log out menu-->
+      <div class="menu-log">
+        <div *ngIf="!(isLoggedIn$ | async) as isLoggedIn">
+          <a mat-button *ngIf="isLoggedIn" [routerLink]="['/login']">
+            <mat-icon>account_circle</mat-icon> Login
+          </a>
         </div>
-    </mat-toolbar>
-    <router-outlet></router-outlet>
+
+        <div mat-list-item *ngIf="isLoggedIn$ | async as isLoggedIn">
+          <a mat-button *ngIf="isLoggedIn" (click)="logout()">
+            <mat-icon>logout</mat-icon> Logout
+          </a>
+        </div>
+      </div>
+  </mat-toolbar>
+  <app-loading [detectRoutingOngoing]="true"></app-loading>
+  <router-outlet class="router-outlet"></router-outlet>
+
+  <footer>
+    <p>{{title}}</p>
+  </footer>
 </mat-sidenav-container>

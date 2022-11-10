@@ -1,0 +1,62 @@
+<!--Reactive Form provides synchronous access to the data model, immutability with observable operators, and change tracking through observable streams.-->
+
+<div class="container">
+  <h2>Crane add</h2>
+
+  <form [formGroup]="addCraneForm" (ngSubmit)="onSubmit()" #formDir="ngForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Crane name</mat-label>
+            <input matInput placeholder="Crane name" formControlName="name" class="form-control" required>
+            <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
+                <mat-error *ngIf="name.errors?.['required']">The field is required.</mat-error>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Visual presentation of crane</mat-label>
+            <input matInput formControlName="url" class="form-control" required>
+            <mat-error *ngIf="url.invalid && (url.dirty || url.touched)">
+                <mat-error *ngIf="url.errors?.['required']">The field is required.</mat-error>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Operating weight</mat-label>
+            <input matInput type="text" formControlName="operWeight" class="form-control" required>
+            <mat-error *ngIf="operWeight.invalid && (operWeight.dirty || operWeight.touched)">
+                <mat-error *ngIf="operWeight.errors?.['required']">The field is required.</mat-error>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Max. torque</mat-label>
+            <input matInput type="number" formControlName="maxTorque" class="form-control" required>
+            <mat-error *ngIf="maxTorque.invalid && (maxTorque.dirty || maxTorque.touched)">
+                <mat-error *ngIf="maxTorque.errors?.['required']">The field is required.</mat-error>
+            </mat-error>
+        </mat-form-field>
+        <mat-radio-group formControlName="kellyDrillingDepth" required>
+            <label for="kellyDrillingDepth">Kelly drilling, max. drilling depth</label>
+            <mat-radio-button value="34.5">34.5</mat-radio-button>
+            <mat-radio-button value="53.2">53.2</mat-radio-button>
+            <mat-radio-button value="70.8">70.8</mat-radio-button>
+            <mat-error *ngIf="kellyDrillingDepth.invalid && (kellyDrillingDepth.dirty || kellyDrillingDepth.touched)">
+                <mat-error *ngIf="kellyDrillingDepth.errors?.['required']">The field is required.</mat-error>
+            </mat-error>
+        </mat-radio-group>
+        <div>
+            <mat-label>Kelly drilling, max. drilling diameter</mat-label>
+            <mat-slider formControlName="kellyDrillingDiameter" min="1500" max="3500" step="200"
+            class="form-control" (change)="updateSetting($event)" [value]="sliderValue" required></mat-slider>
+            <mat-hint>{{sliderValue}}</mat-hint>
+            <mat-error *ngIf="kellyDrillingDiameter.invalid && (kellyDrillingDiameter.dirty || kellyDrillingDiameter.touched)">
+              <mat-error *ngIf="kellyDrillingDiameter.errors?.['required']">The field is required.</mat-error>
+          </mat-error>
+        </div>
+
+
+        <p>Form status: {{ addCraneForm.status }} </p>
+        <pre></pre>
+        <p>Complete the form to enable Submit button.</p>
+        <button class="btn btn-primary" type="submit" [disabled]="!addCraneForm.valid">Submit</button>
+        <button class="btn btn-primary" type="button" (click)="goBack()">Go back</button>
+        <button class="btn btn-primary" type="button" (click)="resetForm()">Reset</button>
+    </form>
+</div>

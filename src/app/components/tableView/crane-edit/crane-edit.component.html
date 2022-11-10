@@ -1,0 +1,70 @@
+<!--Reactive Form provides synchronous access to the data model, immutability with observable operators, and change tracking through observable streams.-->
+
+<div class="container">
+  <h2>Crane edit details</h2>
+    <form [formGroup]="editCraneForm" (ngSubmit)="updateCrane()" novalidate>
+        <div class="form-group">
+            <label for="name">Crane name</label><br />
+            <input type="text" id="name" formControlName="name" class="form-control" required>
+            <div *ngIf="name.invalid && (name.dirty || name.touched)">
+                <div *ngIf="name.errors?.['required']">Name is required.</div>
+            </div>
+        </div>
+        <pre></pre>
+        <div class="form-group">
+            <label for="url">Visual presentation of crane</label><br />
+            <input type="text" id="url" formControlName="url" class="form-control" required>
+            <div *ngIf="url.invalid && (url.dirty || url.touched)">
+                <div *ngIf="url.errors?.['required']">url is required.</div>
+            </div>
+        </div>
+        <pre></pre>
+        <div class="form-group">
+            <label for="operWeight">Operating weight</label><br />
+            <input type="text" id="operWeight" formControlName="operWeight" class="form-control" required>
+            <div *ngIf="operWeight.invalid && (operWeight.dirty || operWeight.touched)">
+                <div *ngIf="operWeight.errors?.['required']">The field is required.</div>
+            </div>
+        </div>
+        <pre></pre>
+        <div class="form-group">
+            <label for="maxTorque">Max. torque</label><br />
+            <input type="number" id="maxTorque" formControlName="maxTorque" class="form-control" required>
+            <div *ngIf="maxTorque.invalid && (maxTorque.dirty || maxTorque.touched)">
+                <div *ngIf="maxTorque.errors?.['required']">The field is required.</div>
+            </div>
+        </div>
+        <pre></pre>
+        <div class="form-group">
+            <div for="kellyDrillingDepth">Kelly drilling, max. drilling depth</div>
+            <input type="radio" id="kellyDrillingDepth1" formControlName="kellyDrillingDepth" value="34.5" required>
+            <label for="kellyDrillingDepth1">34.5</label>
+            <input type="radio" id="kellyDrillingDepth2" formControlName="kellyDrillingDepth" value="53.2">
+            <label for="kellyDrillingDepth2">53.2</label>
+            <input type="radio" id="kellyDrillingDepth3" formControlName="kellyDrillingDepth" value="70.8">
+            <label for="kellyDrillingDepth3">70.8</label>
+            <div *ngIf="kellyDrillingDepth.invalid && (kellyDrillingDepth.dirty || kellyDrillingDepth.touched)">
+                <div *ngIf="kellyDrillingDepth.errors?.['required']">The field is required.</div>
+            </div>
+        </div>
+         <div class="form-group">
+            <label for="kellyDrillingDiameter">Kelly drilling, max. drilling diameter</label><br />
+            <input type="range" id="kellyDrillingDiameter" formControlName="kellyDrillingDiameter" min="1500" max="3500" step="200"
+                class="form-control" oninput="this.nextElementSibling.value = this.value" required>
+            <output>1500</output>
+            <div *ngIf="kellyDrillingDiameter.invalid && (kellyDrillingDiameter.dirty || kellyDrillingDiameter.touched)">
+                <div *ngIf="kellyDrillingDiameter.errors?.['required']">The field is required.</div>
+            </div>
+        </div>
+        <pre></pre>
+
+
+        <p>Form status: {{ editCraneForm.status }} </p>
+        <pre></pre>
+
+        <p>Complete the form to enable Submit button.</p>
+        <button class="btn btn-primary" type="submit" [disabled]="!editCraneForm.valid">Submit</button>
+        <button class="btn btn-primary" type="button" (click)="goBack()">Go back</button>
+        <button class="btn btn-primary" type="button" (click)="resetForm()">Reset</button>
+    </form>
+</div>

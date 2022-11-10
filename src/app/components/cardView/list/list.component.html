@@ -1,0 +1,12 @@
+<div class="card-container" >
+    <mat-card *ngFor="let crane of Crane; let i = index" (click)="selectCrane(crane)" highlighted #highlighter="bringColor">
+        <mat-card-header>
+            <mat-card-title>{{ crane.name }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image [src]="crane.url" alt="Photo of a crane" (dblclick)="highlighter.toggle()"/>
+        <mat-card-content *appNgxShowOdd="show">
+          <p> {{ i }}</p>
+          <p> {{ crane.shortDescription }}</p>
+        </mat-card-content>
+    </mat-card>
+</div>

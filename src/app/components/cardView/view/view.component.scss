@@ -1,0 +1,30 @@
+.container {
+    margin: 20px;
+    margin-bottom: 0;
+}
+
+.nav {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    @media (min-width: 1220px) {
+           display: grid;
+        grid-template-columns: 50% 50%;
+}
+}
+
+app-detail {
+    padding: 30px;
+}
+
+.btn-gray {
+  background-color: lightgray;
+  margin-left: .25em;
+}

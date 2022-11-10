@@ -1,0 +1,41 @@
+<form [formGroup]="form" class="form">
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput required formControlName="name" class="form-control" placeholder="LTM 1030-2.1" type="text"  />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Image URL</mat-label>
+        <input matInput required formControlName="url" class="form-control" placeholder="https://specs.lectura.de/models/renamed/orig/at-krane-ltm-1030-2-1--liebherr(4).jpg"
+            type="text" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Short Desription</mat-label>
+      <input matInput required formControlName="shortDescription" class="form-control" placeholder="This is an extremely good crane"
+          type="text" />
+  </mat-form-field>
+    <mat-form-field>
+        <mat-label>Load capacity</mat-label>
+        <input matInput required formControlName="loadCapacity" class="form-control" placeholder="35" type="number"  />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Telescopic boom</mat-label>
+        <input matInput required formControlName="telescopicBoom" class="form-control" placeholder="30" type="number" />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Max height</mat-label>
+        <input matInput required formControlName="maxHeight" class="form-control" placeholder="44" type="number" />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Max radius</mat-label>
+        <input matInput required formControlName="maxRadius" class="form-control" placeholder="30" type="number" />
+    </mat-form-field>
+
+    <mat-radio-group aria-label="Select an axles" required formControlName="axles" class="form-control card-radio" >
+        <mat-radio-button value="2" class="radio-button-value">2</mat-radio-button>
+        <mat-radio-button value="3" class="radio-button-value">3</mat-radio-button>
+        <mat-radio-button value="4" class="radio-button-value">4</mat-radio-button>
+      </mat-radio-group>
+    <button type="button" mat-raised-button (click)="onSubmit()" color="primary" [disabled]="!form.valid">
+        Submit
+    </button>
+</form>

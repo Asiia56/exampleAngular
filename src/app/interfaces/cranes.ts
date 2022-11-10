@@ -6,7 +6,18 @@ export interface Crane {
     telescopicBoom: number;
     maxHeight: number;
     maxRadius: number;
-    axles: number
+    axles: number,
+    shortDescription: string
+}
+
+export interface DeepFoundation {
+    id: string;
+    name: string;
+    url: string;
+    operWeight: string;
+    maxTorque: number;
+    kellyDrillingDepth: number;
+    kellyDrillingDiameter: number;
 }
 
 export interface MobileCrane {

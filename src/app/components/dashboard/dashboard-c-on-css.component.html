@@ -1,0 +1,105 @@
+<div class="container">
+  <header>
+    <div class="header-first-line">
+      <ul class="site-nav container">
+        <li class="span-mat">
+          <a href="#">
+            <mat-icon>language</mat-icon> Germany | English
+          </a>
+        </li>
+        <li> <a href="#">Home</a> </li>
+        <li> <a href="#">Contact</a> </li>
+      </ul>
+      <a class="logo" routerLink="/cranes-card-view"><img src="assets/logo.PNG" alt="logo" /></a>
+    </div>
+    <div class="header-third-line">
+      <ul class="menu-list container">
+        <li> <a href="#">About us</a> </li>
+        <li> <a href="#">Products</a> </li>
+        <li> <a href="#">News</a> </li>
+      </ul>
+      <div class="search-wrapper">
+        <form class="search-form" method="get" action="#" target="_blank">
+          <label for="search" class="search-field">
+            <input class="header-search" type="text" name="search" id="search" placeholder="Search:">
+            <button type="submit" class="search-submit" title="Search">
+              <svg aria-hidden="true" focusable="false" class="icon-search" width="17" height="17" viewBox="0 0 17 17"
+                fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M13.458 12.044L17 15.586L15.586 17L12.044 13.458C10.782 14.421 9.21 15 7.5 15C3.35786 15 0 11.6421 0 7.5C0 3.35786 3.35786 0 7.5 0C11.6421 0 15 3.35786 15 7.5C15.0001 9.14309 14.4581 10.7403 13.458 12.044ZM7.5 2C4.467 2 2 4.467 2 7.5C2.00331 10.5362 4.4638 12.9967 7.5 13C10.532 13 13 10.532 13 7.5C13 4.467 10.532 2 7.5 2Z" />
+              </svg>
+            </button>
+          </label>
+        </form>
+      </div>
+    </div>
+  </header>
+
+
+
+  <section>
+    <div>
+      <h2>Products</h2>
+      <p>Exceptionally practical, seasoned and proven engineering as well as a consistent high quality level ensure
+        customer benefit in all product areas.</p>
+    </div>
+    <div class="products-wrapper">
+      <figure class="slider">
+        <div class="slider-content">
+          <button class="btn-slide btn-prev-slide">
+            <mat-icon>chevron_right</mat-icon> <span class="visually-hidden">Previous slide</span>
+          </button>
+          <button class="btn-slide btn-next-slide">
+            <mat-icon>chevron_left</mat-icon> <span class="visually-hidden">Next slide</span>
+          </button>
+          <figure class="slide current-slide">
+            <img src="assets/mining_hex_9600_stage.jpg" alt="Mining hex R-9600" />
+            <figcaption class="caption">
+              <h3>Mining hex R 9600:</h3>
+              <p>The next generation of hydraulic mining excavators has arrived</p>
+            </figcaption>
+          </figure>
+          <a routerLink="/cranes-card-view" class="btn btn-catalog">Show all</a>
+          <figure class="slide visually-hidden">
+            <img src="assets/unplugged-stage-sessions-002-1920x1080.jpg"
+              alt="Construction site with machines" />
+            <figcaption class="caption">
+              <h3> Deep foundation</h3>
+              <p> Piling and drilling rigs for demanding foundation work</p>
+            </figcaption>
+          </figure>
+          <a routerLink="/cranes-table-view" class="btn btn-catalog">Show all</a>
+        </div>
+      </figure>
+
+      <div class="products">
+        <a routerLink="/cranes-table-view"><img class="products-image"
+            src="assets/liebherr-deep-foundation-spezialtiefbau-teaser_img_190.jpg" alt="Deep foundation image">
+            <span>Deep foundation</span></a>
+      </div>
+      <div class="products">
+        <a routerLink="/cranes-card-view"><img class="products-image"
+            src="assets/liebherr-teaser-web-product-range-mobile-cranes.jpg" alt="Mobile cranes image">
+            <span>Mobile cranes</span></a>
+      </div>
+      <div class="products">
+        <a routerLink="/mobile-cranes"><img class="products-image" src="assets/liebher-beton-mixer-300-2_img_190.jpg"
+            alt="Small mobile cranes image">
+            <span>
+              Small mobile cranes
+            </span></a>
+      </div>
+      <div class="products">
+        <a routerLink="/cranes-table-view"><img class="products-image"
+            src="assets/liebherr-deep-foundation-spezialtiefbau-teaser_img_190.jpg" alt="Deep foundation image">
+            <span>Deep foundation</span></a>
+      </div>
+      <div class="products">
+        <a routerLink="/cranes-card-view"><img class="products-image"
+            src="assets/liebherr-teaser-web-product-range-mobile-cranes.jpg" alt="Mobile cranes image">
+            <span>Mobile cranes</span></a>
+      </div>
+    </div>
+  </section>
+
+</div>
