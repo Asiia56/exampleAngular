@@ -1,5 +1,10 @@
 
 <div class="container">
+  <ul class="breadcrumbs">
+    <li><a mat-list-item routerLink="/dashboard"> <mat-icon>home</mat-icon> </a></li>
+    <li><mat-icon>chevron_right</mat-icon></li>
+    <li><a routerLink="/mobile-cranes"> Mobile cranes</a></li>
+  </ul>
   <h2 class="page-header">Details about cranes</h2>
   <ul class="row cranes">
   <li class="col-sm-4" *ngFor="let crane of cranes">

@@ -1,15 +1,45 @@
-<div class="list container">
-  <h2 class="page-header">List of cranes</h2>
-  <div class="list-header" *ngIf="isLoggedIn$ | async as isLoggedIn">
-    <button mat-raised-button color="primary" (click)="addCrane()"> Add Crane </button>
-    <button mat-raised-button class="btn-gray" routerLink="../" > Go back </button>
+<div class="list table-container">
+  <ul class="breadcrumbs">
+    <li><a mat-list-item routerLink="/dashboard"> <mat-icon>home</mat-icon> </a></li>
+    <li><mat-icon>chevron_right</mat-icon></li>
+    <li><a> Cranes (card view)</a></li>
+  </ul>
+
+  <div>
+    <h2 class="page-header">List of cranes</h2>
+    <div class="list-header" *ngIf="isLoggedIn$ | async as isLoggedIn">
+      <button mat-raised-button color="primary" (click)="addCrane()"> Add Crane </button>
+      <button mat-raised-button class="btn-gray" routerLink="../"> Go back </button>
+    </div>
+    <div class="list-header" *ngIf="!(isLoggedIn$ | async) as isLoggedIn">
+      <button mat-raised-button color="primary" [disabled]="isLoggedIn" (click)="addCrane()"> Add Crane </button>
+    </div>
   </div>
-  <div class="list-header" *ngIf="!(isLoggedIn$ | async) as isLoggedIn">
-    <button mat-raised-button color="primary" [disabled]="isLoggedIn" (click)="addCrane()"> Add Crane </button>
+  <div class="content">
+    <!--from here starts grid of 2 columns-->
+    <app-filters></app-filters>
+    <app-list (craneEmitter)="selectCrane($event)"></app-list>
+    <app-detail [crane]="selectedCrane" *ngIf="selectedCrane showWindow" (deleteCrane)="deleteCrane(selectedCrane)"
+      (updateCrane)="updateCrane(selectedCrane)" (closeCrane)="closeCrane(selectedCrane)"></app-detail>
   </div>
 </div>
-<div class="content">
-  <app-list (craneEmitter)="selectCrane($event)"></app-list>
-  <app-detail [crane]="selectedCrane" *ngIf="selectedCrane showWindow" (deleteCrane)="deleteCrane(selectedCrane)"
-    (updateCrane)="updateCrane(selectedCrane)" (closeCrane)="closeCrane(selectedCrane)"></app-detail>
+
+<!--
+    <mat-tab-group>
+
+    <div class="content">
+
+      <mat-tab label="Cranes">
+        <app-list (craneEmitter)="selectCrane($event)"></app-list>
+        <app-detail [crane]="selectedCrane" *ngIf="selectedCrane showWindow" (deleteCrane)="deleteCrane(selectedCrane)"
+          (updateCrane)="updateCrane(selectedCrane)" (closeCrane)="closeCrane(selectedCrane)"></app-detail>
+      </mat-tab>
+      <mat-tab label="Deep foundation">
+        <p>Someday there will be an info about deep foundation</p>
+      </mat-tab>
+    </div>
+  </mat-tab-group>
+
 </div>
+
+-->

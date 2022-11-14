@@ -8,6 +8,7 @@ import { CraneEditComponent } from './crane-edit/crane-edit.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialExampleModule } from '../../material.module';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MaterialExampleModule } from '../../material.module';
     CraneTableRouting,
     FormsModule,
     ReactiveFormsModule,
-    MaterialExampleModule
+    MaterialExampleModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: []

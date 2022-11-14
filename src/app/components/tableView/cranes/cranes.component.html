@@ -20,7 +20,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let crane of Crane">
+        <tr *ngFor="let crane of cranes">
           <th scope="row">{{ crane?.['$id'] }}</th>
           <td>{{ crane.name }}</td>
           <td><img class="crane-image" src="{{ crane.url }}" alt="link to image with {{ crane.name }}"/></td>

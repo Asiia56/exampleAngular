@@ -12,6 +12,7 @@ import { ViewComponent } from './view/view.component';
 
 import { HighlightDirective } from 'src/app/directives/highlight.directive';
 import { NgxShowOddDirective } from 'src/app/directives/ngx-show-odd.directive';
+import { FiltersComponent } from './filters/filters.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NgxShowOddDirective } from 'src/app/directives/ngx-show-odd.directive';
     ListComponent,
     ViewComponent,
     HighlightDirective,
-    NgxShowOddDirective
+    NgxShowOddDirective,
+    FiltersComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,24 @@
+<section class="filter">
+  <h3>Filter:</h3>
+  <form [formGroup]="filter" class="form modal-panel filterForm">
+
+    <div class="form-group">
+      <label for="loadCapacity" class="label-input">Load Capacity</label><br />
+      <input type="range" id="loadCapacity" formControlName="loadCapacity" min="30" max="500" step="5"
+        class="form-control" oninput="this.nextElementSibling.value = this.value" required>
+      <output>150</output>
+    </div>
+    <div class="grey-line"></div>
+    <div class="form-group">
+      <div for="axles" class="label-input">Axles</div>
+        <input type="radio" id="axles1" formControlName="axles" value="2">
+        <label for="axles1">2</label>
+        <input type="radio" id="axles2" formControlName="axles" value="3">
+        <label for="axles2">3</label>
+        <input type="radio" id="axles3" formControlName="axles" value="4">
+        <label for="axles3">4</label>
+    </div>
+
+    <button mat-raised-button class="btn-gray" type="submit">Show</button>
+  </form>
+</section>

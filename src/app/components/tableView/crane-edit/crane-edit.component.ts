@@ -39,6 +39,7 @@ export class CraneEditComponent implements OnInit {
   get maxTorque() { return this.editCraneForm.get('maxTorque')!; }
   get kellyDrillingDepth() { return this.editCraneForm.get('kellyDrillingDepth')!; }
   get kellyDrillingDiameter() { return this.editCraneForm.get('kellyDrillingDiameter')!; }
+  get shortDescription() { return this.editCraneForm.get('shortDescription')!; }
 
   //update form
   updateCraneForm() {
@@ -48,7 +49,8 @@ export class CraneEditComponent implements OnInit {
       operWeight: ['', Validators.required],
       maxTorque: ['', Validators.required],
       kellyDrillingDepth: ['', Validators.required],
-      kellyDrillingDiameter: ['', Validators.required]
+      kellyDrillingDiameter: ['', Validators.required],
+      shortDescription: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(60)]]
     });
   }
 

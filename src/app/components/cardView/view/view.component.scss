@@ -1,30 +1,61 @@
-.container {
-    margin: 20px;
-    margin-bottom: 0;
+.table-container {
+  padding: 30px;
 }
 
 .nav {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
 }
 
 .content {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 
-    @media (min-width: 1220px) {
-           display: grid;
-        grid-template-columns: 50% 50%;
+  @media (min-width: 1000px) {
+    display: grid;
+    grid-template-columns: 20% 40% 40%;
+  }
 }
-}
+
 
 app-detail {
-    padding: 30px;
+  padding: 30px;
 }
 
 .btn-gray {
   background-color: lightgray;
   margin-left: .25em;
+}
+
+.breadcrumbs {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  margin-top: 23px;
+  margin-bottom: 20px;
+}
+
+.breadcrumbs li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  line-height: 18px;
+  color: #000000;
+  text-transform: uppercase;
+  margin-right: 16px;
+  position: relative;
+}
+
+.breadcrumbs a {
+  color: #000000;
+}
+
+.breadcrumbs a:hover {
+  color: #3f51b5;
+  font-weight: 500;
+  text-decoration: none;
 }

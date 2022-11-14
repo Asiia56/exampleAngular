@@ -16,3 +16,33 @@ mat-form-field {
   border-color: none;
   box-shadow: none;
 }
+.breadcrumbs {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  margin-top: 23px;
+  margin-bottom: 20px;
+}
+
+.breadcrumbs li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  line-height: 18px;
+  color: #000000;
+  text-transform: uppercase;
+  margin-right: 16px;
+  position: relative;
+}
+
+.breadcrumbs a {
+  color: #000000;
+}
+
+.breadcrumbs a:hover {
+  color: #3f51b5;
+  font-weight: 500;
+  text-decoration: none;
+}

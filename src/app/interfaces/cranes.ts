@@ -18,6 +18,7 @@ export interface DeepFoundation {
     maxTorque: number;
     kellyDrillingDepth: number;
     kellyDrillingDiameter: number;
+    shortDescription: string
 }
 
 export interface MobileCrane {

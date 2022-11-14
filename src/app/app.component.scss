@@ -23,25 +23,29 @@ a {
   margin-left: auto
 }
 
+.title {
+  @media (max-width: 375px) {
+    font-size: .75em;
+  }
+}
+
+.dropdown-menu-custom,
+.log-menu {
+  @media (max-width: 375px) {
+    font-size: .5em;
+  }
+}
+
 .dropdown-btn:focus{
   outline: none;
 }
 
-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 40px;
-  background-color: #3f51b5;
-  color: #fff;
-  text-align: center;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.footer {
+  min-height: 16px;
+  max-height: 40px;
 
-  p {
-    margin: 0;
+  .footer-title {
+    margin: 0 auto;
   }
 
 }

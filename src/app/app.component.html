@@ -37,9 +37,8 @@
     </button>
 
       <!--drop-down menu-->
-      <a mat-button [matMenuTriggerFor]="dropdown">
-        <mat-icon>precision_manufacturing</mat-icon> Cranes
-      </a>
+      <a mat-button [matMenuTriggerFor]="dropdown" class="dropdown-menu-custom">
+        <mat-icon>precision_manufacturing</mat-icon>Cranes</a>
       <mat-menu #dropdown>
         <button mat-menu-item class="dropdown-btn" routerLink="/cranes-table-view">Cranes (table view)</button>
         <button mat-menu-item class="dropdown-btn" routerLink="/cranes-card-view">Cranes (card view)</button>
@@ -53,22 +52,25 @@
       <!--log in/log out menu-->
       <div class="menu-log">
         <div *ngIf="!(isLoggedIn$ | async) as isLoggedIn">
-          <a mat-button *ngIf="isLoggedIn" [routerLink]="['/login']">
-            <mat-icon>account_circle</mat-icon> Login
-          </a>
+          <a mat-button *ngIf="isLoggedIn" [routerLink]="['/login']" class="log-menu">
+            <mat-icon>account_circle</mat-icon>Login</a>
         </div>
 
         <div mat-list-item *ngIf="isLoggedIn$ | async as isLoggedIn">
-          <a mat-button *ngIf="isLoggedIn" (click)="logout()">
-            <mat-icon>logout</mat-icon> Logout
-          </a>
+          <a mat-button *ngIf="isLoggedIn" (click)="logout()" class="log-menu">
+            <mat-icon>logout</mat-icon>Logout</a>
         </div>
       </div>
   </mat-toolbar>
   <app-loading [detectRoutingOngoing]="true"></app-loading>
   <router-outlet class="router-outlet"></router-outlet>
 
-  <footer>
+<!--
+    <footer>
     <p>{{title}}</p>
   </footer>
+-->
+<mat-toolbar color="primary" class="footer">
+  <mat-toolbar-row><p class="footer-title">{{title}}</p></mat-toolbar-row>
+</mat-toolbar>
 </mat-sidenav-container>

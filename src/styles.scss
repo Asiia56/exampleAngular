@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-
 .btn {
   margin: 0.2em;
 }
@@ -28,3 +27,20 @@ body {
   }
 }
 
+
+.cdk-overlay-pane {
+  @media(max-width: 400px) {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: 100% !important;
+    height: 100% !important;
+
+    .mat-dialog-container {
+      border-radius: 0;
+      padding: 14px !important;
+    }
+
+  }
+
+}

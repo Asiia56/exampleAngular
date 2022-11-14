@@ -4,9 +4,10 @@ import { Observable, filter, tap, Subject, takeUntil } from 'rxjs';
 import { FormComponent } from '../form/form.component';
 
 import { CraneService } from 'src/app/services/crane.service';
-import { Crane } from 'src/app/interfaces/cranes';
+import { Crane, DeepFoundation } from 'src/app/interfaces/cranes';
 import { AuthService } from 'src/app/services/auth.service';
 import { ActivatedRoute } from '@angular/router';
+import { DeepFoundationService } from 'src/app/services/deep-foundation.service';
 
 @Component({
   selector: 'app-view',
@@ -21,10 +22,15 @@ export class ViewComponent implements OnInit {
   destroyed$ = new Subject<void>();
   isLoggedIn$: Observable<boolean>;
 
+  deepFoundation: DeepFoundation[];
+  allDF$: Observable<DeepFoundation[]>;
+  selectedDF?: DeepFoundation;
+
   constructor(private readonly crudApi: CraneService,
+    private readonly crudApiDF: DeepFoundationService,
     private readonly dialog: MatDialog, private readonly auth: AuthService,
     private actRoute: ActivatedRoute) {
-      const id = this.actRoute.snapshot.paramMap.get('id') as string;
+    const id = this.actRoute.snapshot.paramMap.get('id') as string;
   }
 
   ngOnInit(): void {
@@ -63,6 +69,11 @@ export class ViewComponent implements OnInit {
   selectCrane(crane: Crane) {
     this.selectedCrane = crane;
   }
+
+  selectDF(deepFoundation: DeepFoundation) {
+    this.selectedDF = deepFoundation;
+  }
+
 
   deleteCrane(selectedCrane) {
     this.crudApi.deleteCrane(selectedCrane.$id);

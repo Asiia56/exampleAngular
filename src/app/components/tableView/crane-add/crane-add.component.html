@@ -1,6 +1,14 @@
 <!--Reactive Form provides synchronous access to the data model, immutability with observable operators, and change tracking through observable streams.-->
 
 <div class="container">
+  <ul class="breadcrumbs">
+    <li><a mat-list-item routerLink="/dashboard"> <mat-icon>home</mat-icon> </a></li>
+    <li><mat-icon>chevron_right</mat-icon></li>
+    <li><a routerLink="/cranes-table-view"> Cranes (table view)</a></li>
+    <li><mat-icon>chevron_right</mat-icon></li>
+    <li><a> Cranes add</a></li>
+  </ul>
+
   <h2>Crane add</h2>
 
   <form [formGroup]="addCraneForm" (ngSubmit)="onSubmit()" #formDir="ngForm">
@@ -20,7 +28,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Operating weight</mat-label>
-            <input matInput type="text" formControlName="operWeight" class="form-control" required>
+            <input matInput type="number" formControlName="operWeight" class="form-control" required>
             <mat-error *ngIf="operWeight.invalid && (operWeight.dirty || operWeight.touched)">
                 <mat-error *ngIf="operWeight.errors?.['required']">The field is required.</mat-error>
             </mat-error>
@@ -50,7 +58,16 @@
               <mat-error *ngIf="kellyDrillingDiameter.errors?.['required']">The field is required.</mat-error>
           </mat-error>
         </div>
-
+        <mat-form-field appearance="outline">
+          <mat-label>Short description</mat-label>
+          <input matInput type="text" formControlName="shortDescription" class="form-control" required>
+          <mat-error *ngIf="shortDescription.invalid && (shortDescription.dirty || shortDescription.touched)">
+            <mat-hint align="end">{{shortDescription?.value.length}} / 60</mat-hint>
+            <mat-error *ngIf="shortDescription.errors?.['required']">The field is required.</mat-error>
+              <mat-error *ngIf="shortDescription?.hasError('minlength')"> A minimum length of 7 characters is required. </mat-error>
+              <mat-error *ngIf="shortDescription?.hasError('maxlength')"> Maximum length of 60 characters is possible. </mat-error>
+          </mat-error>
+      </mat-form-field>
 
         <p>Form status: {{ addCraneForm.status }} </p>
         <pre></pre>

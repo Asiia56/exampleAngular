@@ -1,0 +1,29 @@
+.filter {
+  margin: 0.25em;
+}
+
+.label-input {
+  font-weight: 500;
+}
+
+.grey-line {
+  content: "";
+  height: 1px;
+  width: 100%;
+  background-color: grey;
+  margin-bottom: 1em;
+}
+
+input[type="radio"] {
+  background-color: initial;
+  cursor: default;
+  appearance: auto;
+  box-sizing: border-box;
+  margin: 2px 3px 0 5px;
+  padding: initial;
+  border: initial;
+}
+
+label {
+  margin: 0;
+}

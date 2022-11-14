@@ -1,25 +1,75 @@
-<h2 class="page-header">Details about cranes</h2>
-
-<div class="container">
+<div class="table-container">
+  <ul class="breadcrumbs">
+    <li><a mat-list-item routerLink="/dashboard"> <mat-icon>home</mat-icon> </a></li>
+    <li><mat-icon>chevron_right</mat-icon></li>
+    <li><a routerLink="/cranes-table-view"> Cranes (table view)</a></li>
+  </ul>
+  <h2 class="page-header">Details about cranes</h2>
   <a routerLink="/cranes-table-view/add" class="btn btn-success" *ngIf="hideWhenNoCrane"> Add crane</a>
-</div>
-<div class="pricing-header mx-auto">
-  <div class="no-data text-center" *ngIf="noData">
-    <img src="assets/crane.jpg" class="preloader-icon" alt="No crane has been added yet" />
-    <p class="nodata-msg">No crane has been added yet!</p>
-    <a routerLink="/cranes-table-view/add" class="btn btn-success"> Add crane </a>
+
+  <!--show offer to add data with picture if no data is in database-->
+  <div class="pricing-header mx-auto">
+    <div class="no-data text-center" *ngIf="noData">
+      <img src="assets/crane.jpg" class="preloader-icon" alt="No crane has been added yet" />
+      <p class="nodata-msg">No crane has been added yet!</p>
+      <a routerLink="/cranes-table-view/add" class="btn btn-success"> Add crane </a>
+    </div>
   </div>
+
+  <!--show table with data-->
+
+  <table mat-table class="cranes-table mat-elevation-z8" *ngIf="hideWhenNoCrane" [dataSource]="cranes"
+    multiTemplateDataRows>
+
+    <ng-container matColumnDef="name" sticky>
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let crane">{{ crane.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="url">
+      <th mat-header-cell *matHeaderCellDef> Visual </th>
+      <td mat-cell *matCellDef="let crane"><img class="crane-image" src="{{ crane.url }}"
+          alt="link to image with {{ crane.name }}"></td>
+    </ng-container>
+
+    <ng-container matColumnDef="operWeight">
+      <th mat-header-cell *matHeaderCellDef> Oper Weight </th>
+      <td mat-cell *matCellDef="let crane">{{ crane.operWeight }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="maxTorque">
+      <th mat-header-cell *matHeaderCellDef> Max Torque </th>
+      <td mat-cell *matCellDef="let crane">{{ crane.maxTorque }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="kellyDrillingDepth">
+      <th mat-header-cell *matHeaderCellDef> Kelly Drilling Depth </th>
+      <td mat-cell *matCellDef="let crane">{{ crane.kellyDrillingDepth }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="kellyDrillingDiameter">
+      <th mat-header-cell *matHeaderCellDef> Kelly Drilling Diameter </th>
+      <td mat-cell *matCellDef="let crane">{{ crane.kellyDrillingDiameter }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef> Edit </th>
+      <td mat-cell *matCellDef="let crane">
+        <span class="mr-2 btn btn-outline-primary btn-sm"
+          routerLink="/cranes-table-view/edit/{{ crane?.['$id'] }}">Edit</span>
+        <span class="btn btn-outline-danger btn-sm" (click)="deleteCrane(crane)">Delete</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="showShortDescription">
+      <th mat-header-cell *matHeaderCellDef> Short Description </th>
+      <td mat-cell *matCellDef="let crane" colspan="7"> {{crane.shortDescription}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedCols, sticky: true"></tr>
+    <tr mat-row (click)="onToggleCrane(crane)" *matRowDef="let crane; columns: displayedCols"></tr>
+    <tr mat-row *matRowDef="let crane; columns: ['showShortDescription']"
+      [class.collapsed-detail]="crane != currentCrane"></tr>
+  </table>
+
 </div>
-<table mat-table *ngIf="hideWhenNoCrane" class="cranes-table
-mat-elevation-z8" [dataSource]="cranes">
-  <ng-container matColumn="CraneId">
-    <th mat-header-cell *matHeaderCellDef> Crane Id </th>
-    <td mat-cell *matCellDef="let crane">{{ crane?.['$id'] }}</td>
-  </ng-container>
-  <ng-container matColumn="Name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let crane">{{ crane.name }}</td>
-  </ng-container>
-  <tr mat-header-row *matHeaderRowDef="displayedCols"></tr>
-  <tr mat-row *matRowDef="let crane; column: displayedCols"></tr>
-</table>

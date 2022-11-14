@@ -1,6 +1,13 @@
 <!--Reactive Form provides synchronous access to the data model, immutability with observable operators, and change tracking through observable streams.-->
 
 <div class="container">
+  <ul class="breadcrumbs">
+    <li><a mat-list-item routerLink="/dashboard"> <mat-icon>home</mat-icon> </a></li>
+    <li><mat-icon>chevron_right</mat-icon></li>
+    <li><a routerLink="/cranes-table-view"> Cranes (table view)</a></li>
+    <li><mat-icon>chevron_right</mat-icon></li>
+    <li><a> Cranes edit</a></li>
+  </ul>
   <h2>Crane edit details</h2>
     <form [formGroup]="editCraneForm" (ngSubmit)="updateCrane()" novalidate>
         <div class="form-group">
@@ -58,6 +65,15 @@
         </div>
         <pre></pre>
 
+      <div class="form-group">
+        <label for="shortDescription">Short description</label><br />
+        <input type="text" id="shortDescription" formControlName="shortDescription" class="form-control" required>
+        <div *ngIf="shortDescription.invalid && (shortDescription.dirty || shortDescription.touched)">
+            <div *ngIf="shortDescription.errors?.['required']">url is required.</div>
+            <div *ngIf="shortDescription.errors?.['minlength']">A minimum length of 7 characters is required.</div>
+            <div *ngIf="shortDescription.errors?.['maxlength']">Maximum length of 60 characters is possible.</div>
+        </div>
+    </div>
 
         <p>Form status: {{ editCraneForm.status }} </p>
         <pre></pre>

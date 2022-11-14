@@ -23,6 +23,7 @@ export class DeepFoundationService {
       maxTorque: crane.maxTorque,
       kellyDrillingDepth: crane.kellyDrillingDepth,
       kellyDrillingDiameter: crane.kellyDrillingDiameter,
+      shortDescription: crane.shortDescription
     });
   }
 
@@ -45,7 +46,8 @@ export class DeepFoundationService {
       maxTorque: crane.maxTorque,
       kellyDrillingDepth: crane.kellyDrillingDepth,
       kellyDrillingDiameter: crane.kellyDrillingDiameter,
-    });    
+      shortDescription: crane.shortDescription
+    });
   }
 
   deleteCrane(id: string) {
