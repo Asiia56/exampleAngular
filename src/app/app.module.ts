@@ -17,7 +17,7 @@ import { MobileCranesComponent } from './components/mobile-cranes/mobile-cranes.
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
 
@@ -34,6 +34,7 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { LoadingComponent } from './components/loading/loading.component';
+import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
@@ -44,7 +45,7 @@ import { LoadingComponent } from './components/loading/loading.component';
     MobileCranesComponent,
     LoginFormComponent,
     RegisterComponent,
-    LoadingComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -67,9 +68,13 @@ import { LoadingComponent } from './components/loading/loading.component';
     NgxPaginationModule,
     MaterialExampleModule,
     MatNativeDateModule,
-    CommonModule
+    CommonModule,
+    MatSortModule
   ],
-  providers: [],
+  providers: [AngularFirestore],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+
+ }

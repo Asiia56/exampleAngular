@@ -3,9 +3,9 @@
         <mat-card-header >
             <mat-card-title>{{ crane.name }}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image [src]="crane.url" alt="Photo of a crane" (dblclick)="highlighter.toggle()"/>
+        <img mat-card-image [src]="crane.iconUrl" alt="Photo of a crane" (dblclick)="highlighter.toggle()"/>
         <mat-card-content *appNgxShowOdd="i">
-          <p> {{ i }} {{ crane.shortDescription }}</p>
+          <p> {{ i }} {{ crane.description }}</p>
         </mat-card-content>
     </mat-card>
 </div>

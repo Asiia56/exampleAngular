@@ -2,18 +2,17 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { DeepFoundation } from 'src/app/interfaces/cranes';
 import { DeepFoundationService } from '../../../services/deep-foundation.service';
 import { ToastrService } from 'ngx-toastr';
-import { MatSort, Sort } from '@angular/material/sort';
+import { MatSort } from '@angular/material/sort';
 import { tap } from 'rxjs';
-import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-cranes',
   templateUrl: './cranes2.component.html',
   styleUrls: ['./cranes.component.scss']
 })
-export class CranesComponent implements OnInit {
+export class CranesComponent implements OnInit, AfterViewInit {
 
-  constructor(public crudApi: DeepFoundationService, public toastr: ToastrService) { }
+  constructor(public crudApi: DeepFoundationService, public toastr: ToastrService) {}
 
   hideWhenNoCrane: boolean = false;
   noData: boolean = false;
@@ -66,5 +65,16 @@ export class CranesComponent implements OnInit {
       this.currentCrane = crane;
     }
   }
+
+  @ViewChild(MatSort)
+  matSort: MatSort;
+
+  ngAfterViewInit() {
+    console.log({SORT:this.matSort});
+    this.matSort.sortChange.pipe(tap(() => this.loadCranes()));
+
+    /*ERROR TypeError: Cannot read properties of undefined (reading 'sortChange')*/
+  }
+
 
 }

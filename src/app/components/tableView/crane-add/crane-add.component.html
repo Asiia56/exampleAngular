@@ -21,9 +21,9 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Visual presentation of crane</mat-label>
-            <input matInput formControlName="url" class="form-control" required>
-            <mat-error *ngIf="url.invalid && (url.dirty || url.touched)">
-                <mat-error *ngIf="url.errors?.['required']">The field is required.</mat-error>
+            <input matInput formControlName="iconUrl" class="form-control" required>
+            <mat-error *ngIf="iconUrl.invalid && (iconUrl.dirty || iconUrl.touched)">
+                <mat-error *ngIf="iconUrl.errors?.['required']">The field is required.</mat-error>
             </mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
@@ -60,12 +60,12 @@
         </div>
         <mat-form-field appearance="outline">
           <mat-label>Short description</mat-label>
-          <input matInput type="text" formControlName="shortDescription" class="form-control" required>
-          <mat-error *ngIf="shortDescription.invalid && (shortDescription.dirty || shortDescription.touched)">
-            <mat-hint align="end">{{shortDescription?.value.length}} / 60</mat-hint>
-            <mat-error *ngIf="shortDescription.errors?.['required']">The field is required.</mat-error>
-              <mat-error *ngIf="shortDescription?.hasError('minlength')"> A minimum length of 7 characters is required. </mat-error>
-              <mat-error *ngIf="shortDescription?.hasError('maxlength')"> Maximum length of 60 characters is possible. </mat-error>
+          <input matInput type="text" formControlName="description" class="form-control" required>
+          <mat-error *ngIf="description.invalid && (description.dirty || description.touched)">
+            <mat-hint align="end">{{description?.value.length}} / 60</mat-hint>
+            <mat-error *ngIf="description.errors?.['required']">The field is required.</mat-error>
+              <mat-error *ngIf="description?.hasError('minlength')"> A minimum length of 7 characters is required. </mat-error>
+              <mat-error *ngIf="description?.hasError('maxlength')"> Maximum length of 60 characters is possible. </mat-error>
           </mat-error>
       </mat-form-field>
 

@@ -13,6 +13,8 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+
+
   @Input() Crane: Crane[];//crane$: Observable<Crane[]>;
   @Output() craneEmitter = new EventEmitter<Crane>();
   @Output() dfEmitter = new EventEmitter<DeepFoundation>();
@@ -53,4 +55,5 @@ export class ListComponent implements OnInit {
     moveItemInArray(this.Crane, event.previousIndex, event.currentIndex);
 
   }
+
 }

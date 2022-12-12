@@ -18,13 +18,13 @@ export class CraneService {
   addCrane(crane: Crane) {
     this.cranesRef.push({
       name: crane.name,
-      url: crane.url,
+      iconUrl: crane.iconUrl,
       loadCapacity: crane.loadCapacity,
       telescopicBoom: crane.telescopicBoom,
       maxHeight: crane.maxHeight,
       maxRadius: crane.maxRadius,
       axles: crane.axles,
-      shortDescription: crane.shortDescription
+      description: crane.description
     });
   }
 
@@ -42,13 +42,13 @@ export class CraneService {
     this.craneRef = this.db.object('cranes-list/' + id);
     this.craneRef.update({
       name: crane.name,
-      url: crane.url,
+      iconUrl: crane.iconUrl,
       loadCapacity: crane.loadCapacity,
       telescopicBoom: crane.telescopicBoom,
       maxHeight: crane.maxHeight,
       maxRadius: crane.maxRadius,
       axles: crane.axles,
-      shortDescription: crane.shortDescription
+      description: crane.description
     });
   }
 

@@ -1,13 +1,14 @@
 export interface Crane {
-    id: string;
-    name: string;
-    url: string;
-    loadCapacity: number;
-    telescopicBoom: number;
-    maxHeight: number;
-    maxRadius: number;
-    axles: number,
-    shortDescription: string
+  id: string;
+  name: string;
+  iconUrl: string;
+  loadCapacity: number;
+  telescopicBoom: number;
+  maxHeight: number;
+  maxRadius: number;
+  axles: number;
+  description: string;
+  category: string
 }
 
 export interface DeepFoundation {

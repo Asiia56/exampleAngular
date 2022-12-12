@@ -159,6 +159,16 @@ header {
   }
 }
 
+.carousel-inner > .carousel-item>img, .carousel-inner>.carousel-item>a>img {
+  max-height: 190px;
+
+  @media (min-width: 768px) {max-height: 345px;}
+}
+
+.carousel-caption h5 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
 
 .products {
   text-align: center;
@@ -184,15 +194,3 @@ header {
   max-width: 150px;
   height: auto;
 }
-
-.carousel-inner > .carousel-item>img, .carousel-inner>.carousel-item>a>img {
-  max-height: 190px;
-
-  @media (min-width: 768px) {max-height: 345px;}
-}
-
-.carousel-caption h5 {
-  font-size: 1.25rem;
-  font-weight: 500;
-}
-

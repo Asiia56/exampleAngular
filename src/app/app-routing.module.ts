@@ -16,7 +16,6 @@ const redirectLoggedInToHome = () => redirectLoggedInTo(['dashboard']);
 
 const routes: Routes = [//how to add a path to each page
 
-
   //cranes (table-view)
 
   { path: "cranes-table-view", loadChildren: () => import('./components/tableView/cranes-table.module').then(m => m.CraneTableModule),

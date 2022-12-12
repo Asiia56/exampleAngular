@@ -34,12 +34,12 @@ export class CraneAddComponent implements OnInit {
   craneForm() {
     this.addCraneForm = this.fb.group({
       name: ['', Validators.required],
-      url: ['', Validators.required],
+      iconUrl: ['', Validators.required],
       operWeight: ['', Validators.required],
       maxTorque: ['', Validators.required],
       kellyDrillingDepth: ['', Validators.required],
       kellyDrillingDiameter: ['', Validators.required],
-      shortDescription: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(60)]]
+      description: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(60)]]
     });
   }
 
@@ -67,11 +67,11 @@ export class CraneAddComponent implements OnInit {
   }
 
   get name() { return this.addCraneForm.get('name')!; }
-  get url() { return this.addCraneForm.get('url')!; }
+  get iconUrl() { return this.addCraneForm.get('iconUrl')!; }
   get operWeight() { return this.addCraneForm.get('operWeight')!; }
   get maxTorque() { return this.addCraneForm.get('maxTorque')!; }
   get kellyDrillingDepth() { return this.addCraneForm.get('kellyDrillingDepth')!; }
   get kellyDrillingDiameter() { return this.addCraneForm.get('kellyDrillingDiameter')!; }
-  get shortDescription() { return this.addCraneForm.get('shortDescription'); }
+  get description() { return this.addCraneForm.get('description'); }
 
 }

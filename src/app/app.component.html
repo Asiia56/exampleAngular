@@ -11,6 +11,9 @@
       <a mat-list-item routerLink="/cranes-card-view">
         <mat-icon>shopping_basket</mat-icon> Cranes (card view)
       </a>
+      <a mat-list-item routerLink="/cranes-card-fire-view">
+        <mat-icon>shopping_basket</mat-icon> Cranes (fire collection)
+      </a>
       <a mat-list-item routerLink="/mobile-cranes">
         <mat-icon>agriculture</mat-icon> Mobile cranes
       </a>
@@ -42,6 +45,7 @@
       <mat-menu #dropdown>
         <button mat-menu-item class="dropdown-btn" routerLink="/cranes-table-view">Cranes (table view)</button>
         <button mat-menu-item class="dropdown-btn" routerLink="/cranes-card-view">Cranes (card view)</button>
+        <button mat-menu-item class="dropdown-btn" routerLink="/cranes-card-fire-view">Cranes (fire collection)</button>
         <button mat-menu-item class="dropdown-btn" routerLink="/mobile-cranes">Mobile cranes</button>
       </mat-menu>
 
@@ -65,12 +69,7 @@
   <app-loading [detectRoutingOngoing]="true"></app-loading>
   <router-outlet class="router-outlet"></router-outlet>
 
-<!--
-    <footer>
-    <p>{{title}}</p>
-  </footer>
--->
-<mat-toolbar color="primary" class="footer">
+<!--<mat-toolbar color="primary" class="footer">
   <mat-toolbar-row><p class="footer-title">{{title}}</p></mat-toolbar-row>
-</mat-toolbar>
+</mat-toolbar>-->
 </mat-sidenav-container>

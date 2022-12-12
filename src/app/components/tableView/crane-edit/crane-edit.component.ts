@@ -34,23 +34,23 @@ export class CraneEditComponent implements OnInit {
   }
 
   get name() { return this.editCraneForm.get('name')!; }
-  get url() { return this.editCraneForm.get('url')!; }
+  get iconUrl() { return this.editCraneForm.get('iconUrl')!; }
   get operWeight() { return this.editCraneForm.get('operWeight')!; }
   get maxTorque() { return this.editCraneForm.get('maxTorque')!; }
   get kellyDrillingDepth() { return this.editCraneForm.get('kellyDrillingDepth')!; }
   get kellyDrillingDiameter() { return this.editCraneForm.get('kellyDrillingDiameter')!; }
-  get shortDescription() { return this.editCraneForm.get('shortDescription')!; }
+  get description() { return this.editCraneForm.get('description')!; }
 
   //update form
   updateCraneForm() {
     this.editCraneForm = this.fb.group({
       name: ['', Validators.required],
-      url: ['', Validators.required],
+      iconUrl: ['', Validators.required],
       operWeight: ['', Validators.required],
       maxTorque: ['', Validators.required],
       kellyDrillingDepth: ['', Validators.required],
       kellyDrillingDiameter: ['', Validators.required],
-      shortDescription: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(60)]]
+      description: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(60)]]
     });
   }
 

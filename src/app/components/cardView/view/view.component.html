@@ -17,8 +17,9 @@
   </div>
   <div class="content">
     <!--from here starts grid of 2 columns-->
-    <app-filters></app-filters>
+
     <app-list (craneEmitter)="selectCrane($event)"></app-list>
+
     <app-detail [crane]="selectedCrane" *ngIf="selectedCrane showWindow" (deleteCrane)="deleteCrane(selectedCrane)"
       (updateCrane)="updateCrane(selectedCrane)" (closeCrane)="closeCrane(selectedCrane)"></app-detail>
   </div>
@@ -27,17 +28,15 @@
 <!--
     <mat-tab-group>
 
-    <div class="content">
+    <mat-tab-group>
+      <mat-tab label="Crawler crane">
+        <app-list (craneEmitter)="selectCrane($event)" [cranes]="crawlerCrane$ | async"> </app-list>
+      </mat-tab>
 
-      <mat-tab label="Cranes">
-        <app-list (craneEmitter)="selectCrane($event)"></app-list>
-        <app-detail [crane]="selectedCrane" *ngIf="selectedCrane showWindow" (deleteCrane)="deleteCrane(selectedCrane)"
-          (updateCrane)="updateCrane(selectedCrane)" (closeCrane)="closeCrane(selectedCrane)"></app-detail>
+      <mat-tab label="Wheel crane">
+        <app-list (craneEmitter)="selectCrane($event)" [cranes]="wheelCrane$ | async"></app-list>
       </mat-tab>
-      <mat-tab label="Deep foundation">
-        <p>Someday there will be an info about deep foundation</p>
-      </mat-tab>
-    </div>
+    </mat-tab-group>
   </mat-tab-group>
 
 </div>

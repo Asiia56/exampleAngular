@@ -19,10 +19,11 @@
   <!--show table with data-->
 
   <table mat-table class="cranes-table mat-elevation-z8" *ngIf="hideWhenNoCrane" [dataSource]="cranes"
-    multiTemplateDataRows>
+    multiTemplateDataRows matSort matSortDisableClear matSortActive="name" matSortDirection="asc">
+    <!--matSort is only add visualisation and event, but event handler logic should be added by developer-->
 
     <ng-container matColumnDef="name" sticky>
-      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
       <td mat-cell *matCellDef="let crane">{{ crane.name }}</td>
     </ng-container>
 
@@ -61,14 +62,14 @@
       </td>
     </ng-container>
 
-    <ng-container matColumnDef="showShortDescription">
+    <ng-container matColumnDef="showDescription">
       <th mat-header-cell *matHeaderCellDef> Short Description </th>
-      <td mat-cell *matCellDef="let crane" colspan="7"> {{crane.shortDescription}} </td>
+      <td mat-cell *matCellDef="let crane" colspan="7"> {{crane.description}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedCols, sticky: true"></tr>
     <tr mat-row (click)="onToggleCrane(crane)" *matRowDef="let crane; columns: displayedCols"></tr>
-    <tr mat-row *matRowDef="let crane; columns: ['showShortDescription']"
+    <tr mat-row *matRowDef="let crane; columns: ['showDescription']"
       [class.collapsed-detail]="crane != currentCrane"></tr>
   </table>
 

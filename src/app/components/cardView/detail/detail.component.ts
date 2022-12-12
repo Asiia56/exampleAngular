@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
+
   @Input() crane: Crane;
   @Output() updateCrane = new EventEmitter<void>;
   @Output() deleteCrane = new EventEmitter<void>;

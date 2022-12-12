@@ -16,7 +16,7 @@ import { DeepFoundationService } from 'src/app/services/deep-foundation.service'
 })
 export class ViewComponent implements OnInit {
 
-  crane: Crane[];
+ crane: Crane[];
   allCrane$: Observable<Crane[]>;
   selectedCrane?: Crane;
   destroyed$ = new Subject<void>();

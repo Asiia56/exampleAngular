@@ -12,6 +12,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
+
   form: UntypedFormGroup;
 
   constructor(
@@ -26,13 +27,13 @@ export class FormComponent implements OnInit {
   setForm() {
     this.form = this.fb.group({
       name: [this.crane.name, Validators.required], //this.crane.name as reference to data, which received from @Input and should be inserted into respetive input field.
-      url: [this.crane.url, Validators.required], //w/o it, form will not understand what to do with received object
+      iconUrl: [this.crane.iconUrl, Validators.required], //w/o it, form will not understand what to do with received object
       loadCapacity: [this.crane.loadCapacity, Validators.required],
       telescopicBoom: [this.crane.telescopicBoom, Validators.required],
       maxHeight: [this.crane.maxHeight, Validators.required],
       maxRadius: [this.crane.maxRadius, Validators.required],
       axles: [this.crane.axles, Validators.required],
-      shortDescription: [this.crane.shortDescription, [Validators.required, Validators.minLength(10), Validators.maxLength(60)]]
+      description: [this.crane.description, [Validators.required, Validators.minLength(10), Validators.maxLength(60)]]
     });
   }
 
@@ -43,4 +44,5 @@ export class FormComponent implements OnInit {
   close() {
     this.dialogRef.close();
   }
+
 }

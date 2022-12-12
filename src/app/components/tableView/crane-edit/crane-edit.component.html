@@ -19,10 +19,10 @@
         </div>
         <pre></pre>
         <div class="form-group">
-            <label for="url">Visual presentation of crane</label><br />
-            <input type="text" id="url" formControlName="url" class="form-control" required>
-            <div *ngIf="url.invalid && (url.dirty || url.touched)">
-                <div *ngIf="url.errors?.['required']">url is required.</div>
+            <label for="iconUrl">Visual presentation of crane</label><br />
+            <input type="text" id="url" formControlName="iconUrl" class="form-control" required>
+            <div *ngIf="iconUrl.invalid && (iconUrl.dirty || iconUrl.touched)">
+                <div *ngIf="iconUrl.errors?.['required']">url is required.</div>
             </div>
         </div>
         <pre></pre>
@@ -66,12 +66,12 @@
         <pre></pre>
 
       <div class="form-group">
-        <label for="shortDescription">Short description</label><br />
-        <input type="text" id="shortDescription" formControlName="shortDescription" class="form-control" required>
-        <div *ngIf="shortDescription.invalid && (shortDescription.dirty || shortDescription.touched)">
-            <div *ngIf="shortDescription.errors?.['required']">url is required.</div>
-            <div *ngIf="shortDescription.errors?.['minlength']">A minimum length of 7 characters is required.</div>
-            <div *ngIf="shortDescription.errors?.['maxlength']">Maximum length of 60 characters is possible.</div>
+        <label for="description">Short description</label><br />
+        <input type="text" id="description" formControlName="description" class="form-control" required>
+        <div *ngIf="description.invalid && (description.dirty || description.touched)">
+            <div *ngIf="description.errors?.['required']">url is required.</div>
+            <div *ngIf="description.errors?.['minlength']">A minimum length of 7 characters is required.</div>
+            <div *ngIf="description.errors?.['maxlength']">Maximum length of 60 characters is possible.</div>
         </div>
     </div>
 
